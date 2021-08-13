@@ -9,17 +9,22 @@ class Prestamo : public Cliente
 {
 public:
 	Prestamo();
-	Prestamo(int, std::string, std::string, std::string, int, double, std::string, std::string); 
-
+	Prestamo(int, std::string, std::string, std::string, int, double, double, int, std::string, std::string);       
+	 
 	void establecerTipoPrestamo(std::string);
 	std::string obtenerTipoPrestamo() const;
 	void establecerDias(int);
 	int obtenerDias() const;
 	void establecerCostoDia(double);
 	double obtenerCostoDia() const;
+	void establecerCostoDaño(double);
+	double obtenerCostoDaño() const;     
 
-	void establecer_Daño(std::string);
-	std::string obtener_Daño() const;
+	void establecer_Daño(int);
+	int obtener_Daño() const; 
+	void establecer_TipoDaño(std::string);
+	std::string obtener_TipoDaño() const;
+
 	void establecer_Libro(std::string);
 	std::string obtener_Libro() const; 
 
@@ -30,9 +35,11 @@ private:
 	char tipoPrestamo[30]; 
 	int Dias;
 	double costoDia;
+	double costoDaño;
 	/*Daño daño;  
 	Libro libro; */   
-	char Daño[30];
+	char Daño_[30];
+	int DañoID; 
 	char Libro[15];
 };
 

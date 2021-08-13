@@ -7,22 +7,31 @@ Prestamo::Prestamo() {
 
 }
 Prestamo::Prestamo(int id, string nombre, string apellido, string tipo_prestamo, int dias, 
-	double costo_dia, string tipo_daño, string _nombreLibro) {
+	double costo_dia, double costo_daño, int id_daño, string tipo_daño, string _nombreLibro) {
 	establecerIDcliente(id), establecerPrimerNombre(nombre), establecerApellidoPaterno(apellido),
 		establecerTipoPrestamo(tipo_prestamo), establecerDias(dias),
-		establecerCostoDia(costo_dia), establecer_Daño(tipo_daño), establecer_Libro(_nombreLibro);
+		establecerCostoDia(costo_dia), establecerCostoDaño(costo_daño),
+		establecer_Daño(id_daño), establecer_TipoDaño(tipo_daño), establecer_Libro(_nombreLibro); 
 }
 
-void Prestamo::establecer_Daño(std::string tipo_daño) {
+void Prestamo::establecer_Daño(int id_daño) {
+	if (id_daño < 0)
+		cerr << "Numero de ID invalido" << endl;
+	DañoID = id_daño; 
+}
+int Prestamo::obtener_Daño() const {
+	return DañoID;
+}
+void Prestamo::establecer_TipoDaño(string tipo_daño) {
 	int longitud = (int)tipo_daño.size();
 	if (longitud < 4)
 		cerr << "Tipo de daño incorrecto" << endl;
 	longitud = (longitud < 30 ? longitud : 29);
-	tipo_daño.copy(Daño, longitud);
-	Daño[longitud] = '\0';
+	tipo_daño.copy(Daño_, longitud);
+	Daño_[longitud] = '\0';
 }
-std::string Prestamo::obtener_Daño() const {
-	return Daño;
+string Prestamo::obtener_TipoDaño() const {
+	return Daño_;
 }
 void Prestamo::establecer_Libro(string _nombreLibro) {
 	int longitud = (int)_nombreLibro.size();
@@ -64,6 +73,15 @@ void Prestamo::establecerCostoDia(double costo_dia) {
 }
 double Prestamo::obtenerCostoDia() const {
 	return costoDia;
+}
+void Prestamo::establecerCostoDaño(double costo_daño) {
+	if (costo_daño >= 0)
+		costoDaño = costo_daño;
+	else
+		throw invalid_argument("El costo por daño debe ser >= 0");
+}
+double Prestamo::obtenerCostoDaño() const {
+	return costoDaño;
 }
 
 void Prestamo::imprimir() const {

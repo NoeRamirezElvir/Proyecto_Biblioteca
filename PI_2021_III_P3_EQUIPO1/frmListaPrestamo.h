@@ -71,6 +71,13 @@ namespace PI2021IIIP3EQUIPO1 {
 
 
 
+
+
+
+
+
+
+
 	private:
 		/// <summary>
 		/// Variable del diseñador necesaria.
@@ -86,6 +93,8 @@ namespace PI2021IIIP3EQUIPO1 {
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(frmListaPrestamo::typeid));
 			this->dgvPrestamo = (gcnew System::Windows::Forms::DataGridView());
+			this->lblTitulo = (gcnew System::Windows::Forms::Label());
+			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->colID = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->colNombre = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->colApellido = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
@@ -93,8 +102,6 @@ namespace PI2021IIIP3EQUIPO1 {
 			this->colDias = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->colDaño = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->colLibro = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->lblTitulo = (gcnew System::Windows::Forms::Label());
-			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvPrestamo))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
@@ -111,6 +118,26 @@ namespace PI2021IIIP3EQUIPO1 {
 			this->dgvPrestamo->Name = L"dgvPrestamo";
 			this->dgvPrestamo->Size = System::Drawing::Size(852, 375);
 			this->dgvPrestamo->TabIndex = 0;
+			// 
+			// lblTitulo
+			// 
+			this->lblTitulo->AutoSize = true;
+			this->lblTitulo->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->lblTitulo->Location = System::Drawing::Point(186, 71);
+			this->lblTitulo->Name = L"lblTitulo";
+			this->lblTitulo->Size = System::Drawing::Size(347, 25);
+			this->lblTitulo->TabIndex = 1;
+			this->lblTitulo->Text = L"Lista de Prestamos Registrados";
+			// 
+			// pictureBox1
+			// 
+			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
+			this->pictureBox1->Location = System::Drawing::Point(564, 12);
+			this->pictureBox1->Name = L"pictureBox1";
+			this->pictureBox1->Size = System::Drawing::Size(165, 134);
+			this->pictureBox1->TabIndex = 2;
+			this->pictureBox1->TabStop = false;
 			// 
 			// colID
 			// 
@@ -143,7 +170,7 @@ namespace PI2021IIIP3EQUIPO1 {
 			// 
 			// colDaño
 			// 
-			this->colDaño->HeaderText = L"Daño al libro";
+			this->colDaño->HeaderText = L"ID Daño al libro";
 			this->colDaño->Name = L"colDaño";
 			this->colDaño->Resizable = System::Windows::Forms::DataGridViewTriState::True;
 			this->colDaño->SortMode = System::Windows::Forms::DataGridViewColumnSortMode::NotSortable;
@@ -154,26 +181,6 @@ namespace PI2021IIIP3EQUIPO1 {
 			this->colLibro->Name = L"colLibro";
 			this->colLibro->Resizable = System::Windows::Forms::DataGridViewTriState::True;
 			this->colLibro->SortMode = System::Windows::Forms::DataGridViewColumnSortMode::NotSortable;
-			// 
-			// lblTitulo
-			// 
-			this->lblTitulo->AutoSize = true;
-			this->lblTitulo->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->lblTitulo->Location = System::Drawing::Point(186, 71);
-			this->lblTitulo->Name = L"lblTitulo";
-			this->lblTitulo->Size = System::Drawing::Size(347, 25);
-			this->lblTitulo->TabIndex = 1;
-			this->lblTitulo->Text = L"Lista de Prestamos Registrados";
-			// 
-			// pictureBox1
-			// 
-			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
-			this->pictureBox1->Location = System::Drawing::Point(564, 12);
-			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(165, 134);
-			this->pictureBox1->TabIndex = 2;
-			this->pictureBox1->TabStop = false;
 			// 
 			// frmListaPrestamo
 			// 
@@ -188,6 +195,7 @@ namespace PI2021IIIP3EQUIPO1 {
 			this->Name = L"frmListaPrestamo";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Prestamos Registrados";
+			this->Load += gcnew System::EventHandler(this, &frmListaPrestamo::frmListaPrestamo_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvPrestamo))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);
@@ -197,5 +205,7 @@ namespace PI2021IIIP3EQUIPO1 {
 #pragma endregion
 
 
+private: System::Void frmListaPrestamo_Load(System::Object^ sender, System::EventArgs^ e) {
+}
 };
 }

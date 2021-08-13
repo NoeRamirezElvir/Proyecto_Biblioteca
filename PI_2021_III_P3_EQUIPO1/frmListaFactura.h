@@ -49,11 +49,17 @@ namespace PI2021IIIP3EQUIPO1 {
 	private: System::Windows::Forms::Label^ lblTitulo;
 	private: System::Windows::Forms::PictureBox^ pictureBox1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ colFactura;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ colClienteID;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ colCliente;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ colMembresia;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ colEmpleado;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ colTipoPrestamo;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ colTipoDaño;
+
+
+
+
+
+
 
 
 
@@ -87,11 +93,11 @@ namespace PI2021IIIP3EQUIPO1 {
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(frmListaFactura::typeid));
 			this->dgvFactura = (gcnew System::Windows::Forms::DataGridView());
 			this->colFactura = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->colClienteID = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->colCliente = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->colMembresia = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->colEmpleado = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->colTipoPrestamo = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->colTipoDaño = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->lblTitulo = (gcnew System::Windows::Forms::Label());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvFactura))->BeginInit();
@@ -104,7 +110,7 @@ namespace PI2021IIIP3EQUIPO1 {
 			this->dgvFactura->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dgvFactura->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(6) {
 				this->colFactura,
-					this->colClienteID, this->colCliente, this->colMembresia, this->colEmpleado, this->colTipoPrestamo
+					this->colCliente, this->colMembresia, this->colEmpleado, this->colTipoPrestamo, this->colTipoDaño
 			});
 			this->dgvFactura->Location = System::Drawing::Point(22, 152);
 			this->dgvFactura->Name = L"dgvFactura";
@@ -115,11 +121,6 @@ namespace PI2021IIIP3EQUIPO1 {
 			// 
 			this->colFactura->HeaderText = L"No Factura";
 			this->colFactura->Name = L"colFactura";
-			// 
-			// colClienteID
-			// 
-			this->colClienteID->HeaderText = L"ID de Cliente";
-			this->colClienteID->Name = L"colClienteID";
 			// 
 			// colCliente
 			// 
@@ -142,6 +143,11 @@ namespace PI2021IIIP3EQUIPO1 {
 			// 
 			this->colTipoPrestamo->HeaderText = L"Tipo de Prestamo";
 			this->colTipoPrestamo->Name = L"colTipoPrestamo";
+			// 
+			// colTipoDaño
+			// 
+			this->colTipoDaño->HeaderText = L"Tipo de Daño a Libro";
+			this->colTipoDaño->Name = L"colTipoDaño";
 			// 
 			// lblTitulo
 			// 
@@ -176,6 +182,7 @@ namespace PI2021IIIP3EQUIPO1 {
 			this->Name = L"frmListaFactura";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"frmListaFactura";
+			this->Load += gcnew System::EventHandler(this, &frmListaFactura::frmListaFactura_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvFactura))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);
@@ -184,6 +191,8 @@ namespace PI2021IIIP3EQUIPO1 {
 		}
 #pragma endregion
 	
-	};
+	private: System::Void frmListaFactura_Load(System::Object^ sender, System::EventArgs^ e) {
+	}
+};
 }
 

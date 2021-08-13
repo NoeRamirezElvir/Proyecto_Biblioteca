@@ -11,7 +11,7 @@ class Factura : public Prestamo, Daño
 {
 public:
 	Factura();
-	Factura(int, int, std::string, std::string, std::string, std::string);
+	Factura(int, int, std::string, std::string, std::string, std::string, std::string);
 
 	void establecerFacturaID(int);
 	int obtenerFacturaID() const;
@@ -29,8 +29,11 @@ public:
 	std::string obtenerEmpleadoApellido() const;
 	void establecerPrestamo(std::string);
 	std::string obtenerPrestamo() const; 
+	void establecerDaño(std::string);
+	std::string obtenerDaño() const;  
 
-	double calcularTotal(); 
+	void calcularTotal(double, double, int); 
+	double obtenerTotal() const; 
 	void imprimir();
 	void registrar();
 	
@@ -45,6 +48,7 @@ private:
 	char empleadoNombre[10];
 	char empleadoApellido[10];
 	char prestamo_[30];
+	char damage[30];
 	double totalPagar;
 };
 

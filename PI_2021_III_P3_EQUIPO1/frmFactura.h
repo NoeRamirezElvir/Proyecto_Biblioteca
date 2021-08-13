@@ -59,6 +59,8 @@ namespace PI2021IIIP3EQUIPO1 {
 
 
 
+
+
 	private: System::Windows::Forms::Panel^ panel2;
 	private: System::Windows::Forms::Label^ lblEmpleado;
 	private: System::Windows::Forms::Label^ lblFecha;
@@ -76,6 +78,9 @@ namespace PI2021IIIP3EQUIPO1 {
 	private: System::Windows::Forms::Label^ lblMes;
 	private: System::Windows::Forms::Label^ lblAño;
 	private: System::Windows::Forms::Label^ lblEmpleadoApellido;
+
+	private: System::Windows::Forms::Label^ lblDaño;
+	private: System::Windows::Forms::Label^ lblTipoDaño;
 	private: System::Windows::Forms::Label^ lblClienteApellido;
 
 	private:
@@ -118,6 +123,8 @@ namespace PI2021IIIP3EQUIPO1 {
 			this->lblMes = (gcnew System::Windows::Forms::Label());
 			this->lblAño = (gcnew System::Windows::Forms::Label());
 			this->lblEmpleadoApellido = (gcnew System::Windows::Forms::Label());
+			this->lblDaño = (gcnew System::Windows::Forms::Label());
+			this->lblTipoDaño = (gcnew System::Windows::Forms::Label());
 			this->lblClienteApellido = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
@@ -265,11 +272,11 @@ namespace PI2021IIIP3EQUIPO1 {
 			// lblTotalPagar
 			// 
 			this->lblTotalPagar->AutoSize = true;
-			this->lblTotalPagar->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->lblTotalPagar->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblTotalPagar->Location = System::Drawing::Point(84, 423);
+			this->lblTotalPagar->Location = System::Drawing::Point(84, 447);
 			this->lblTotalPagar->Name = L"lblTotalPagar";
-			this->lblTotalPagar->Size = System::Drawing::Size(83, 15);
+			this->lblTotalPagar->Size = System::Drawing::Size(97, 15);
 			this->lblTotalPagar->TabIndex = 15;
 			this->lblTotalPagar->Text = L"Total a Pagar:";
 			// 
@@ -280,7 +287,7 @@ namespace PI2021IIIP3EQUIPO1 {
 				static_cast<System::Byte>(0)));
 			this->btnAgregar->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btnAgregar.Image")));
 			this->btnAgregar->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			this->btnAgregar->Location = System::Drawing::Point(196, 466);
+			this->btnAgregar->Location = System::Drawing::Point(176, 494);
 			this->btnAgregar->Name = L"btnAgregar";
 			this->btnAgregar->Size = System::Drawing::Size(96, 52);
 			this->btnAgregar->TabIndex = 16;
@@ -296,7 +303,7 @@ namespace PI2021IIIP3EQUIPO1 {
 				static_cast<System::Byte>(0)));
 			this->btnMostrar->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btnMostrar.Image")));
 			this->btnMostrar->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			this->btnMostrar->Location = System::Drawing::Point(336, 466);
+			this->btnMostrar->Location = System::Drawing::Point(316, 494);
 			this->btnMostrar->Name = L"btnMostrar";
 			this->btnMostrar->Size = System::Drawing::Size(96, 52);
 			this->btnMostrar->TabIndex = 17;
@@ -332,7 +339,7 @@ namespace PI2021IIIP3EQUIPO1 {
 			// lblPago
 			// 
 			this->lblPago->AutoSize = true;
-			this->lblPago->Location = System::Drawing::Point(193, 425);
+			this->lblPago->Location = System::Drawing::Point(193, 449);
 			this->lblPago->Name = L"lblPago";
 			this->lblPago->Size = System::Drawing::Size(0, 13);
 			this->lblPago->TabIndex = 21;
@@ -361,6 +368,23 @@ namespace PI2021IIIP3EQUIPO1 {
 			this->lblEmpleadoApellido->Size = System::Drawing::Size(0, 13);
 			this->lblEmpleadoApellido->TabIndex = 24;
 			// 
+			// lblDaño
+			// 
+			this->lblDaño->AutoSize = true;
+			this->lblDaño->Location = System::Drawing::Point(84, 417);
+			this->lblDaño->Name = L"lblDaño";
+			this->lblDaño->Size = System::Drawing::Size(75, 13);
+			this->lblDaño->TabIndex = 26;
+			this->lblDaño->Text = L"Tipo de Daño:";
+			// 
+			// lblTipoDaño
+			// 
+			this->lblTipoDaño->AutoSize = true;
+			this->lblTipoDaño->Location = System::Drawing::Point(193, 417);
+			this->lblTipoDaño->Name = L"lblTipoDaño";
+			this->lblTipoDaño->Size = System::Drawing::Size(0, 13);
+			this->lblTipoDaño->TabIndex = 27;
+			// 
 			// lblClienteApellido
 			// 
 			this->lblClienteApellido->AutoSize = true;
@@ -374,7 +398,9 @@ namespace PI2021IIIP3EQUIPO1 {
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::DarkCyan;
-			this->ClientSize = System::Drawing::Size(617, 531);
+			this->ClientSize = System::Drawing::Size(602, 593);
+			this->Controls->Add(this->lblTipoDaño);
+			this->Controls->Add(this->lblDaño);
 			this->Controls->Add(this->lblClienteApellido);
 			this->Controls->Add(this->lblEmpleadoApellido);
 			this->Controls->Add(this->lblAño);
@@ -412,33 +438,6 @@ namespace PI2021IIIP3EQUIPO1 {
 
 		}
 #pragma endregion
-	private: System::Void btnMostrar_Click(System::Object^ sender, System::EventArgs^ e) {
-		frmListaFactura^ listaFactura = gcnew frmListaFactura;
-		listaFactura->Show();
-		ifstream archivoFacturaEntrada("Facturas.dat", ios::binary | ios::app | ios::in);
-		if (!archivoFacturaEntrada)
-		{
-			MessageBox::Show("No se pudo abrir el archivo", "Error en el sistema", MessageBoxButtons::OK, MessageBoxIcon::Error);
-		}
-		Factura leerFactura;
-		archivoFacturaEntrada.read(reinterpret_cast<char*>(&leerFactura),
-			sizeof(Factura));
-		while (!archivoFacturaEntrada.eof())
-		{
-			std::string idf = to_string(leerFactura.obtenerFacturaID());
-			std::string idc = to_string(leerFactura.obtenerIDcliente());
-			System::String^ cliente = marshal_as<System::String^>(leerFactura.obtenerPrimerNombre());
-			System::String^ membresia = marshal_as<System::String^>(leerFactura.obtenerTipoMembresia());
-			System::String^ empleado = marshal_as<System::String^>(leerFactura.obtenerEmpleadoNombre());
-			System::String^ prestamo = marshal_as<System::String^>(leerFactura.obtenerPrestamo());
-			System::String^ IDF = marshal_as<System::String^>(idf);
-			System::String^ IDC = marshal_as<System::String^>(idc);
-			listaFactura->dgvFactura->Rows->Add(IDF, IDC, cliente, membresia, empleado, prestamo);  
-			archivoFacturaEntrada.read(reinterpret_cast<char*>(&leerFactura),
-				sizeof(Factura));
-		}
-
-	}
 
 	private: System::Void frmFactura_Load(System::Object^ sender, System::EventArgs^ e) {
 		ofstream archivoFacturas("Facturas.dat", ios::binary | ios::app | ios::out);
@@ -448,25 +447,25 @@ namespace PI2021IIIP3EQUIPO1 {
 			this->Close();
 		}
 
-		ifstream archivoClienteEntrada("Clientes.dat", ios::binary | ios::app | ios::in);
-		if (!archivoClienteEntrada)
+		ifstream archivoPrestamoEntrada("Prestamos.dat", ios::binary | ios::app | ios::in);
+		if (!archivoPrestamoEntrada)
 		{
 			MessageBox::Show("No se pudo abrir el archivo", "Error en el sistema", MessageBoxButtons::OK, MessageBoxIcon::Error);
-			this->Close();
 		}
-		Cliente leerCliente;
-		archivoClienteEntrada.read(reinterpret_cast<char*>(&leerCliente),
-			sizeof(Cliente));
-		while (!archivoClienteEntrada.eof())
+		Prestamo leerPrestamo;
+		archivoPrestamoEntrada.read(reinterpret_cast<char*>(&leerPrestamo),
+			sizeof(Prestamo));
+		while (!archivoPrestamoEntrada.eof())
 		{
-			std::string Clienteid = to_string(leerCliente.obtenerIDcliente());
+			std::string Clienteid = to_string(leerPrestamo.obtenerIDcliente());
 			System::String^ ID = marshal_as<System::String^>(Clienteid);
 			cboCliente->Items->Add(ID); 
-			archivoClienteEntrada.read(reinterpret_cast<char*>(&leerCliente),
-				sizeof(Cliente));
+			archivoPrestamoEntrada.read(reinterpret_cast<char*>(&leerPrestamo),
+				sizeof(Prestamo));
 		}
-		archivoClienteEntrada.close();
+		archivoPrestamoEntrada.close();
 	}
+
 private: System::Void cboCliente_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 	ifstream archivoClienteEntrada("Clientes.dat", ios::binary | ios::app | ios::in);
 	if (!archivoClienteEntrada)
@@ -474,47 +473,11 @@ private: System::Void cboCliente_SelectedIndexChanged(System::Object^ sender, Sy
 		MessageBox::Show("No se pudo abrir el archivo", "Error en el sistema", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		this->Close();
 	}
-	System::String^ IDcliente = cboCliente->SelectedItem->ToString();
-	txtID->Text = IDcliente;
-	Cliente leerPersona;
-	archivoClienteEntrada.read(reinterpret_cast<char*>(&leerPersona), sizeof(Cliente));
-	while (!archivoClienteEntrada.eof())
-	{
-		std::string nombre = leerPersona.obtenerPrimerNombre();
-		std::string apellido = leerPersona.obtenerApellidoPaterno();
-		std::string membre = leerPersona.obtenerTipoMembresia();
-		System::String^ membresia = marshal_as<System::String^>(membre);
-		System::String^ nombrep = marshal_as<System::String^>(nombre);
-		System::String^ apellidop = marshal_as<System::String^>(apellido);
-		std::string id = to_string(leerPersona.obtenerID());
-		System::String^ id1 = marshal_as<System::String^>(id);
-		if (id1 == IDcliente)
-		{
-			lblMembresiaCliente->Text = membresia; 
-			lblClienteNombre->Text = nombrep;
-			lblClienteApellido->Text = apellidop;
-		}
-		archivoClienteEntrada.read(reinterpret_cast<char*>(&leerPersona), sizeof(Cliente));
-	}
 
 	ifstream archivoPrestamoEntrada("Prestamos.dat", ios::binary | ios::app | ios::in);
 	if (!archivoPrestamoEntrada)
 	{
 		MessageBox::Show("No se pudo abrir el archivo", "Error en el sistema", MessageBoxButtons::OK, MessageBoxIcon::Error);
-	}
-	Factura factura; 
-	Prestamo leerPrestamo;
-	archivoPrestamoEntrada.read(reinterpret_cast<char*>(&leerPrestamo),
-		sizeof(Prestamo));
-	while (!archivoPrestamoEntrada.eof()) {
-		
-		std::string tipopresta = leerPrestamo.obtenerTipoPrestamo();
-		System::String^ tipo = marshal_as<System::String^>(tipopresta);
-		std::string costodia = to_string(leerPrestamo.obtenerCostoDia());
-		System::String^ costoDia = marshal_as<System::String^>(costodia);
-		lblTipoPrestamo->Text = tipo;
-		archivoPrestamoEntrada.read(reinterpret_cast<char*>(&leerPrestamo),
-			sizeof(Prestamo));
 	}
 
 	ifstream archivoDañosEntrada("Daños.dat", ios::binary | ios::app | ios::in);
@@ -523,18 +486,72 @@ private: System::Void cboCliente_SelectedIndexChanged(System::Object^ sender, Sy
 		MessageBox::Show("No se pudo crear el archivo", "Error en el sistema", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		this->Close();
 	}
-	//////
-	lblPago->Text = String::Format("{0:F}", factura.calcularTotal());
-	///////
-	lblDia->Text = "11  de";
-	lblMes->Text = "Agosto,";
-	lblAño->Text = "2021";
-
 	ifstream ArchivoEmpleadoEntrada("Empleados.dat", ios::binary | ios::app | ios::in);
 	if (!ArchivoEmpleadoEntrada)
 	{
 		MessageBox::Show("No se pudo abrir el archivo", "Error en el sistema", MessageBoxButtons::OK, MessageBoxIcon::Error);
 	}
+
+
+	System::String^ IDprestamo = cboCliente->SelectedItem->ToString();
+	txtID->Text = IDprestamo;
+	Cliente leerPersona;
+	archivoClienteEntrada.read(reinterpret_cast<char*>(&leerPersona), sizeof(Cliente));
+	Factura factura;
+	Prestamo leerPrestamo;
+	archivoPrestamoEntrada.read(reinterpret_cast<char*>(&leerPrestamo),
+		sizeof(Prestamo));
+
+	Daño leerDaño;
+	archivoDañosEntrada.read(reinterpret_cast<char*>(&leerDaño), sizeof(Daño));
+
+	while ((!archivoClienteEntrada.eof()) && (!archivoPrestamoEntrada.eof()))
+	{
+		std::string id = to_string(leerPersona.obtenerID());
+		System::String^ id1 = marshal_as<System::String^>(id);
+		std::string id2 = to_string(leerPrestamo.obtener_Daño());
+		System::String^ ID2 = marshal_as<System::String^>(id2);
+		if (id1 == IDprestamo)
+		{
+			std::string nombre = leerPersona.obtenerPrimerNombre();
+			std::string apellido = leerPersona.obtenerApellidoPaterno();
+			std::string membre = leerPersona.obtenerTipoMembresia();
+			System::String^ membresia = marshal_as<System::String^>(membre);
+			System::String^ nombrep = marshal_as<System::String^>(nombre);
+			System::String^ apellidop = marshal_as<System::String^>(apellido);
+			std::string tipopresta = leerPrestamo.obtenerTipoPrestamo();
+			System::String^ tipo = marshal_as<System::String^>(tipopresta);
+
+			std::string tipoDaño = leerPrestamo.obtener_TipoDaño();
+			System::String^ TipoDaño = marshal_as<System::String^>(tipoDaño);
+
+			lblMembresiaCliente->Text = membresia;
+			lblClienteNombre->Text = nombrep;
+			lblClienteApellido->Text = apellidop;
+			lblTipoPrestamo->Text = tipo;
+			lblTipoDaño->Text = TipoDaño;
+
+
+			int dias_alquiler = leerPrestamo.obtenerDias();
+			double costoDaño = leerPrestamo.obtenerCostoDaño();
+			double costoDia = leerPrestamo.obtenerCostoDia();
+			//////
+			factura.calcularTotal(costoDia, costoDaño, dias_alquiler);
+			lblPago->Text = String::Format("{0:F}", factura.obtenerTotal());
+			///////
+
+		}
+
+		archivoPrestamoEntrada.read(reinterpret_cast<char*>(&leerPrestamo),
+			sizeof(Prestamo));
+		archivoClienteEntrada.read(reinterpret_cast<char*>(&leerPersona), sizeof(Cliente));
+	}
+
+
+	lblDia->Text = "11   de";
+	lblMes->Text = "Agosto,";
+	lblAño->Text = "2021";
+
 	Empleado leerEmpleado;
 	ArchivoEmpleadoEntrada.read(reinterpret_cast<char*>(&leerEmpleado),
 		sizeof(Empleado));
@@ -608,12 +625,14 @@ private: System::Void cboCliente_SelectedIndexChanged(System::Object^ sender, Sy
 
 						std::string tipopresta = leerPrestamo.obtenerTipoPrestamo();
 						System::String^ tipo = marshal_as<System::String^>(tipopresta);
+						std::string tipo2 = leerPrestamo.obtener_TipoDaño();
+						System::String^ tipodaño = marshal_as<System::String^>(tipo2);
 						archivoPrestamoEntrada.read(reinterpret_cast<char*>(&leerPrestamo),
 							sizeof(Prestamo));
 
 						int f_id = Convert::ToInt32(txtID->Text);
 
-						Factura factura(f_id, id, nombre, membre, nombre_e, tipopresta); 
+						Factura factura(f_id, id, nombre, membre, nombre_e, tipopresta, tipo2);  
 						archivoFacturaSalida.write(reinterpret_cast<char*>(&factura),
 							sizeof(Factura));
 						archivoFacturaSalida.close();
@@ -629,6 +648,7 @@ private: System::Void cboCliente_SelectedIndexChanged(System::Object^ sender, Sy
 						lblNombreEmpleado->Text = "";
 						lblEmpleadoApellido->Text = "";
 						lblTipoPrestamo->Text = "";
+						lblTipoDaño->Text = "";
 
 					}
 					archivoPrestamoEntrada.read(reinterpret_cast<char*>(&leerPrestamo),
@@ -640,6 +660,37 @@ private: System::Void cboCliente_SelectedIndexChanged(System::Object^ sender, Sy
 			archivoClienteEntrada.read(reinterpret_cast<char*>(&leerCliente),
 				sizeof(Cliente));
 		}
+	}
+
+	private: System::Void btnMostrar_Click(System::Object^ sender, System::EventArgs^ e) {
+	 frmListaFactura^ listaFactura = gcnew frmListaFactura;
+			   listaFactura->Show();
+			   ifstream archivoFacturaEntrada("Facturas.dat", ios::binary | ios::app | ios::in);
+			   if (!archivoFacturaEntrada)
+			   {
+				   MessageBox::Show("No se pudo abrir el archivo", "Error en el sistema", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			   }
+			   Factura leerFactura;
+			   archivoFacturaEntrada.read(reinterpret_cast<char*>(&leerFactura),
+				   sizeof(Factura));
+			   while (!archivoFacturaEntrada.eof())
+			   {
+				   std::string idf = to_string(leerFactura.obtenerFacturaID());
+				   std::string idc = to_string(leerFactura.obtenerIDcliente());
+				   System::String^ cliente = marshal_as<System::String^>(leerFactura.obtenerPrimerNombre());
+				   System::String^ membresia = marshal_as<System::String^>(leerFactura.obtenerTipoMembresia());
+				   System::String^ empleado = marshal_as<System::String^>(leerFactura.obtenerEmpleadoNombre());
+				   System::String^ prestamo = marshal_as<System::String^>(leerFactura.obtenerPrestamo());
+				   System::String^ IDF = marshal_as<System::String^>(idf);
+				   System::String^ IDC = marshal_as<System::String^>(idc);
+				   
+				   System::String^ daño = marshal_as<System::String^>(leerFactura.obtener_TipoDaño()); 
+
+				   listaFactura->dgvFactura->Rows->Add(IDF, cliente, membresia, empleado, prestamo, daño); 
+				   archivoFacturaEntrada.read(reinterpret_cast<char*>(&leerFactura),
+					   sizeof(Factura));
+			   }
+
 	}
 };
 }
