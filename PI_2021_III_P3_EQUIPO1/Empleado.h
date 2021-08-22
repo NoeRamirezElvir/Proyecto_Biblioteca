@@ -8,7 +8,7 @@ class Empleado : public Persona
 {
 public:
 	Empleado();
-	Empleado(int, std::string, std::string, int, std::string, double, double, double, double, std::string); 
+	Empleado(int, std::string, std::string, int, std::string, double, double, double, double, std::string, std::string);  
 	//fecha de ingreso
 	void establecerFechaIngreso(std::string);
 	std::string obtenerFechaIngreso() const;
@@ -30,6 +30,9 @@ public:
 	//ID
 	void establecerEmpleadoID(int);
 	int obtenerEmpleadoID() const;
+	//Sucursal
+	void establecerSucursal(std::string);
+	std::string obtenerSucursal() const;
 
 	void registrarEmpleado();
 	double calcularIngresos();
@@ -43,6 +46,7 @@ private:
 	double precioHrsE;
 	double cantVentas;
 	char Departamento[20];
+	char Sucursal[50];
 	//Sucursal sucursal;
 };
 

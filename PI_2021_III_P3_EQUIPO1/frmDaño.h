@@ -270,59 +270,127 @@ namespace PI2021IIIP3EQUIPO1 {
 
 
 	private: System::Void btnMostrar_Click(System::Object^ sender, System::EventArgs^ e) {
-		frmListaDaños^ listaDaños = gcnew frmListaDaños;
-		listaDaños->Show();
+		try
+		{
+			frmListaDaños^ listaDaños = gcnew frmListaDaños;
+			listaDaños->Show();
+			ifstream archivoDañosEntrada("Daños.dat", ios::binary | ios::app | ios::in);
+			if (!archivoDañosEntrada)
+			{
+				this->Close();
+				throw gcnew Exception("No se pudo abrir el archivo.");
+			}
+			Daño leerDaño;
+			archivoDañosEntrada.read(reinterpret_cast<char*>(&leerDaño),
+				sizeof(Daño));
+			while (!archivoDañosEntrada.eof())
+			{
+				std::string id = to_string(leerDaño.obtenerDañoID());
+				System::String^ tipoD = marshal_as<System::String^>(leerDaño.obtenerTipoDaño());
+				std::string costo = to_string(leerDaño.obtenerCostoDaño());
+				System::String^ ID = marshal_as<System::String^>(id);
+				System::String^ Costo = marshal_as<System::String^>(costo);
+				listaDaños->dgvDaños->Rows->Add(ID, tipoD, Costo);
+				archivoDañosEntrada.read(reinterpret_cast<char*>(&leerDaño),
+					sizeof(Daño));
+			}
+		}
+		catch (Exception^ excep)
+		{
+			MessageBox::Show(excep->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
+
+	}
+private: System::Void frmDaño_Load(System::Object^ sender, System::EventArgs^ e) {
+	try
+	{
+		ofstream archivoDaños("Daños.dat", ios::binary | ios::app | ios::out);
+		if (!archivoDaños)
+		{
+			this->Close();
+			throw gcnew Exception("No se pudo crear el archivo.");
+		}
+		txtID->Text = "";
+		cboTipoDaño->Text = "";
+		txtCostoDaño->Text = "";
+	}
+	catch (Exception^ excep)
+	{
+		MessageBox::Show(excep->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error); 
+	}
+	
+}
+private: System::Void btnAgregar_Click(System::Object^ sender, System::EventArgs^ e) {
+	try
+	{
+		ofstream archivoDañoSalida("Daños.dat", ios::binary | ios::app | ios::out);
+		if (!archivoDañoSalida)
+		{
+			this->Close();
+			throw gcnew Exception("No se pudo abrir el archivo.");
+		}
 		ifstream archivoDañosEntrada("Daños.dat", ios::binary | ios::app | ios::in);
 		if (!archivoDañosEntrada)
 		{
-			MessageBox::Show("No se pudo crear el archivo", "Error en el sistema", MessageBoxButtons::OK, MessageBoxIcon::Error);
 			this->Close();
+			throw gcnew Exception("No se pudo abrir el archivo");
 		}
+		if (txtID->Text == "")
+		{
+			throw gcnew Exception("Ingrese el ID.");
+		}
+		int IDdaño = Convert::ToInt32(txtID->Text);
+
 		Daño leerDaño;
 		archivoDañosEntrada.read(reinterpret_cast<char*>(&leerDaño),
 			sizeof(Daño));
 		while (!archivoDañosEntrada.eof())
 		{
-			std::string id = to_string(leerDaño.obtenerDañoID());
-			System::String^ tipoD = marshal_as<System::String^>(leerDaño.obtenerTipoDaño());
-			std::string costo = to_string(leerDaño.obtenerCostoDaño());
-			System::String^ ID = marshal_as<System::String^>(id);
-			System::String^ Costo = marshal_as<System::String^>(costo);
-			listaDaños->dgvDaños->Rows->Add(ID, tipoD, Costo);
-			archivoDañosEntrada.read(reinterpret_cast<char*>(&leerDaño),
-				sizeof(Daño));
+			int id = leerDaño.obtenerDañoID();
+			if (IDdaño != id)
+			{
+				archivoDañosEntrada.read(reinterpret_cast<char*>(&leerDaño),
+					sizeof(Daño));
+			}
+			else
+			{
+				throw gcnew Exception("El ID ya esta en uso.");
+			}
 		}
-	}
-private: System::Void frmDaño_Load(System::Object^ sender, System::EventArgs^ e) {
-	ofstream archivoDaños("Daños.dat", ios::binary | ios::app | ios::out);
-	if (!archivoDaños)
-	{
-		MessageBox::Show("No se pudo crear el archivo", "Error en el sistema", MessageBoxButtons::OK, MessageBoxIcon::Error);
-		this->Close();
-	}
-	txtID->Text = "";
-	cboTipoDaño->Text = "";
-	txtCostoDaño->Text = "";
-}
-private: System::Void btnAgregar_Click(System::Object^ sender, System::EventArgs^ e) {
-	ofstream archivoDañoSalida("Daños.dat", ios::binary | ios::app | ios::out);
-	if (!archivoDañoSalida)
-	{
-		MessageBox::Show("No se pudo abrir el archivo", "Error en el sistema", MessageBoxButtons::OK, MessageBoxIcon::Error);
-		this->Close();
-	}
-	int IDdaño = Convert::ToInt32(txtID->Text);
-	System::String^ TIPO = cboTipoDaño->SelectedItem->ToString();
-	double costo = Convert::ToDouble(txtCostoDaño->Text); 
-	std::string tipo = marshal_as<std::string>(TIPO);
 
-	Daño daño(IDdaño, tipo, costo);
-	archivoDañoSalida.write(reinterpret_cast<char*>(&daño), sizeof(Daño));
-	archivoDañoSalida.close();
+		if (IDdaño <= 0)
+		{
+			throw gcnew Exception("El ID tiene que ser mayor que 0.");
+		}
+		if (IDdaño > 100)
+		{
+			throw gcnew Exception("El ID es demasiado grande");
+		}
+		else if (cboTipoDaño->SelectedItem == nullptr)
+		{
+			throw gcnew Exception("Ingrese el tipo de daño.");
+		}
+		else if (txtCostoDaño->Text == "")
+		{
+			throw gcnew Exception("No debe borrar el costo de daño.");
+		}
 
-	txtID->Text = "";
-	cboTipoDaño->Text = "";
-	txtCostoDaño->Text = "";
+		System::String^ TIPO = cboTipoDaño->SelectedItem->ToString();
+		double costo = Convert::ToDouble(txtCostoDaño->Text);
+		std::string tipo = marshal_as<std::string>(TIPO);
+
+		Daño daño(IDdaño, tipo, costo);
+		archivoDañoSalida.write(reinterpret_cast<char*>(&daño), sizeof(Daño));
+		archivoDañoSalida.close();
+
+		txtID->Text = "";
+		cboTipoDaño->Text = "";
+		txtCostoDaño->Text = "";
+	}
+	catch (Exception^ excep)
+	{
+		MessageBox::Show(excep->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+	}
 }
 private: System::Void cboTipoDaño_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 	Daño daño;
@@ -331,6 +399,7 @@ private: System::Void cboTipoDaño_SelectedIndexChanged(System::Object^ sender, S
 	daño.establecerTipoDaño(Tipo);
 
 	txtCostoDaño->Text = String::Format("{0:F}", daño.calcularDaño()); 
+	txtCostoDaño->Enabled = false;
 }
 };
 }

@@ -9,11 +9,11 @@ Empleado::Empleado() {
 
 }
 Empleado::Empleado(int personaID, string nombre, string apellido, int ID, string fecha, double sueldo,
-	double horas, double ventas, double precio_hora, string departamento) {
+	double horas, double ventas, double precio_hora, string departamento, string sucursal) {
 	establecerID(personaID), establecerPrimerNombre(nombre), establecerApellidoPaterno(apellido),
 		establecerEmpleadoID(ID), establecerFechaIngreso(fecha), establecerSueldo(sueldo),
 		establecerHorasExtras(horas), establecerCantVentas(ventas), establecerPrecioHorasE(precio_hora),
-		establecerDepartamento(departamento);
+		establecerDepartamento(departamento), establecerSucursal(sucursal);
 }
 void Empleado::establecerFechaIngreso(std::string fecha) {
 	int longitud = (int)fecha.size();
@@ -68,6 +68,17 @@ void Empleado::establecerDepartamento(std::string departamento) {
 }
 string Empleado::obtenerDepartamento() const {
 	return Departamento;
+}
+void Empleado::establecerSucursal(string sucursal) {
+	int longitud = (int)sucursal.size();
+	if (longitud < 1)
+		cerr << " incorrecta" << endl;
+	longitud = (longitud < 50 ? longitud : 49);
+	sucursal.copy(Sucursal, longitud);
+	Sucursal[longitud] = '\0';
+}
+string Empleado::obtenerSucursal() const {
+	return Sucursal;
 }
 void Empleado::establecerEmpleadoID(int empleado_id) {
 	if (empleado_id > 0)
