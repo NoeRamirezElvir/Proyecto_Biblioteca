@@ -291,7 +291,36 @@ private: System::Void frmEstante_Load(System::Object^ sender, System::EventArgs^
 			std::string LetraFe = marshal_as<std::string>(LetraF);
 			std::string NivelesE = marshal_as<std::string>(Niveles);
 			Estante estante(ID, LetraIe, LetraFe, NivelesE);
-			if (LetraI = "")
+
+			ifstream archivoEstanteEntrada("Estantes.dat", ios::binary | ios::app | ios::in);
+			if (!archivoEstanteEntrada)
+			{
+				throw gcnew Exception("No se pudo abrir el archivo.");
+			}
+			if (txtId->Text == "")
+			{
+				throw gcnew Exception("Ingrese el ID.");
+			}
+			Estante leerEstante;
+			archivoEstanteEntrada.read(reinterpret_cast<char*>(&leerEstante), sizeof(Estante));
+			while (!archivoEstanteEntrada.eof())
+			{
+				int id = leerEstante.obtenerIDEstante();
+				if (ID != id)
+				{
+					archivoEstanteEntrada.read(reinterpret_cast<char*>(&leerEstante), sizeof(Estante));
+				}
+				else
+				{
+					throw gcnew Exception("El ID ya esta en uso.");
+				}
+			}
+			if (ID <= 0)
+			{
+				throw gcnew Exception("El ID tiene que ser positivo y mayor a 0.");
+			}
+
+			if (LetraI == "")
 			{
 				throw gcnew Exception("Ingrese Letra inicial");
 			}
@@ -299,7 +328,7 @@ private: System::Void frmEstante_Load(System::Object^ sender, System::EventArgs^
 			{
 				throw gcnew Exception("Ingrese solo una letra inicial");
 			}
-			if (LetraF = "")
+			if (LetraF == "")
 			{
 				throw gcnew Exception("Ingrese letra final");
 			}
@@ -311,7 +340,7 @@ private: System::Void frmEstante_Load(System::Object^ sender, System::EventArgs^
 			{
 				throw gcnew Exception("Ingrese nivel");
 			}
-			else if (Niveles->Length < 10 && Niveles->Length > 0)
+			else if (Niveles->Length > 2)
 			{
 				throw gcnew Exception("Niveles disponibles del 1 al 10");
 			}
@@ -325,7 +354,7 @@ private: System::Void frmEstante_Load(System::Object^ sender, System::EventArgs^
 		}
 		catch (Exception^ excep)
 		{
-			MessageBox::Show("Se debe llenar todos los campos", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			MessageBox::Show(excep->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
 	}
 };

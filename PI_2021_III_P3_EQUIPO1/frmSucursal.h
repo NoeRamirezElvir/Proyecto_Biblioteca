@@ -287,23 +287,35 @@ private: System::Void btnAgregar_Click(System::Object^ sender, System::EventArgs
 		}
 		//variables String del sistema
 		System::String^ Nombre = txtNombre->Text;
-		if (cboCiudad->SelectedItem == nullptr)
-		{
-			throw gcnew Exception("llenar campos vacios");
-		}
-		System::String^ ciudad = cboCiudad->SelectedItem->ToString();
 		System::String^ direccion = txtDireccion->Text;
 		System::String^ empleados = txtCantEmpleados->Text;
 		int ID = Convert::ToInt32(txtId->Text);
-
-		//convertir los string
-		std::string ciudadC = marshal_as<std::string>(ciudad);
-		std::string direccionC = marshal_as<std::string>(direccion);
-		std::string empleadosC = marshal_as<std::string>(empleados);
-		std::string nombreC = marshal_as<std::string>(Nombre);
-		if (ID.ToString() == "")
+		ifstream archivoSucursalEntrada("Sucursales.dat", ios::binary | ios::app | ios::in);
+		if (!archivoSucursalEntrada)
 		{
-			throw gcnew Exception("Ingrese ID de Sucursal");
+			throw gcnew Exception("No se pudo abrir el archivo.");
+		}
+		if (txtId->Text == "")
+		{
+			throw gcnew Exception("Ingrese el ID.");
+		}
+		Sucursal leerSucursal;
+		archivoSucursalEntrada.read(reinterpret_cast<char*>(&leerSucursal), sizeof(Sucursal));
+		while (!archivoSucursalEntrada.eof())
+		{
+			int id = leerSucursal.obtenerIDSucursal();
+			if (ID != id)
+			{
+				archivoSucursalEntrada.read(reinterpret_cast<char*>(&leerSucursal), sizeof(Sucursal));
+			}
+			else
+			{
+				throw gcnew Exception("El ID ya esta en uso.");
+			}
+		}
+		if (ID <= 0)
+		{
+			throw gcnew Exception("El ID tiene que ser positivo y mayor a 0.");
 		}
 		if (Nombre == "")
 		{
@@ -317,7 +329,8 @@ private: System::Void btnAgregar_Click(System::Object^ sender, System::EventArgs
 		{
 			throw gcnew Exception("Seleccione Ciudad de Sucursal");
 		}
-		if (direccion = "")
+		System::String^ ciudad = cboCiudad->SelectedItem->ToString();
+		if (direccion == "")
 		{
 			throw gcnew Exception("Ingrese direccion de sucursal");
 		}
@@ -329,6 +342,15 @@ private: System::Void btnAgregar_Click(System::Object^ sender, System::EventArgs
 		{
 			throw gcnew Exception("Ingrese cantidad de Empleados");
 		}
+		else if (empleados->Length >3)
+		{
+			throw gcnew Exception("cantidad de Empleados excedida");
+		}
+		//convertir los string
+		std::string ciudadC = marshal_as<std::string>(ciudad);
+		std::string direccionC = marshal_as<std::string>(direccion);
+		std::string empleadosC = marshal_as<std::string>(empleados);
+		std::string nombreC = marshal_as<std::string>(Nombre);
 		Sucursal sucursal(ID, nombreC, ciudadC, direccionC, empleadosC);
 		archivoSucursalSalida.write(reinterpret_cast<const char*>(&sucursal), sizeof(Sucursal));
 		archivoSucursalSalida.close();
@@ -339,11 +361,10 @@ private: System::Void btnAgregar_Click(System::Object^ sender, System::EventArgs
 		txtCantEmpleados->Text = "";
 		txtNombre->Text = "";
 	}
-	catch (Exception^ excep)
+	catch (Exception^ except)
 	{
-		MessageBox::Show("Llenar campos vacíos", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		MessageBox::Show(except->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 	}
-
 }
 private: System::Void btnMostrar_Click(System::Object^ sender, System::EventArgs^ e) {
 	frmListaSucursales^ formularioS = gcnew frmListaSucursales;

@@ -362,32 +362,46 @@ private: System::Void btnAgregar_Click(System::Object^ sender, System::EventArgs
 			this->Close();
 		}
 		//variables String del sistema
-		if (cboTipo->SelectedItem == nullptr)
-		{
-			throw gcnew Exception("Ingrese los datos requeridos");
-		}
-		if (cboOs->SelectedItem == nullptr)
-		{
-			throw gcnew Exception("Ingrese los datos requeridos");
-		}
+		
 		System::String^ marca = txtMarca->Text;
 		System::String^ modelo = txtModelo->Text;
 		System::String^ disco = txtHdd->Text;
 		System::String^ ram = txtRam->Text;
-		System::String^ tipo = cboTipo->SelectedItem->ToString();
-		System::String^ oS = cboOs->SelectedItem->ToString();
 		System::String^ observacion = txtObservacion->Text;
 		int ID = Convert::ToInt32(txtId->Text);
 
-		//convertir los string
-		std::string marcaC = marshal_as<std::string>(marca);
-		std::string modeloC = marshal_as<std::string>(modelo);
-		std::string discoC = marshal_as<std::string>(disco);
-		std::string ramC = marshal_as<std::string>(ram);
-		std::string tipoC = marshal_as<std::string>(tipo);
-		std::string oSC = marshal_as<std::string>(oS);
-		std::string obserC = marshal_as<std::string>(observacion);
-		Computadora computadora(ID, marcaC, modeloC, discoC, ramC, tipoC, oSC, obserC);
+		ifstream archivoComputadoraEntrada("Computadoras.dat", ios::binary | ios::app | ios::in);
+		if (!archivoComputadoraEntrada)
+		{
+			throw gcnew Exception("No se pudo abrir el archivo.");
+		}
+		if (txtId->Text == "")
+		{
+			throw gcnew Exception("Ingrese el ID.");
+		}
+
+		Computadora leerSucursal;
+		archivoComputadoraEntrada.read(reinterpret_cast<char*>(&leerSucursal), sizeof(Computadora));
+		while (!archivoComputadoraEntrada.eof())
+		{
+			int id = leerSucursal.obtenerIDcomputadora();
+			if (ID != id)
+			{
+				archivoComputadoraEntrada.read(reinterpret_cast<char*>(&leerSucursal), sizeof(Computadora));
+			}
+			else
+			{
+				throw gcnew Exception("El ID ya esta en uso.");
+			}
+		}
+		if (txtId->Text == "")
+		{
+			throw gcnew Exception("Ingrese el ID.");
+		}
+		if (ID <= 0)
+		{
+			throw gcnew Exception("El ID tiene que ser positivo y mayor a 0.");
+		}
 		if (marca == "")
 		{
 			throw gcnew Exception("Ingrese Marca");
@@ -408,7 +422,7 @@ private: System::Void btnAgregar_Click(System::Object^ sender, System::EventArgs
 		{
 			throw gcnew Exception("ingrese capacidad del disco");
 		}
-		else if (disco->Length < 4)
+		else if (disco->Length < 3)
 		{
 			throw gcnew Exception("valor disco muy corto");
 		}
@@ -424,13 +438,34 @@ private: System::Void btnAgregar_Click(System::Object^ sender, System::EventArgs
 		{
 			throw gcnew Exception("Seleccione Tipo");
 		}
+		System::String^ tipo = cboTipo->SelectedItem->ToString();
 		if (cboOs->SelectedItem == nullptr)
 		{
 			throw gcnew Exception("Seleccione el Sistema Operativo");
 		}
+		System::String^ oS = cboOs->SelectedItem->ToString();
+		if (observacion == "")
+		{
+			throw gcnew Exception("Ingrese Observacion");
+		}
+		else if (observacion->Length < 5)
+		{
+			throw gcnew Exception("Observacion demasiada corta");
+		}
+
+		//convertir los string
+		std::string marcaC = marshal_as<std::string>(marca);
+		std::string modeloC = marshal_as<std::string>(modelo);
+		std::string discoC = marshal_as<std::string>(disco);
+		std::string ramC = marshal_as<std::string>(ram);
+		std::string tipoC = marshal_as<std::string>(tipo);
+		std::string oSC = marshal_as<std::string>(oS);
+		std::string obserC = marshal_as<std::string>(observacion);
+		Computadora computadora(ID, marcaC, modeloC, discoC, ramC, tipoC, oSC, obserC);
 
 		archivoComputadoraSalida.write(reinterpret_cast<const char*>(&computadora), sizeof(Computadora));
 		archivoComputadoraSalida.close();
+
 		txtId->Text = "";
 		txtMarca->Text = "";
 		txtModelo->Text = "";
@@ -440,9 +475,9 @@ private: System::Void btnAgregar_Click(System::Object^ sender, System::EventArgs
 		cboOs->Text = "";
 		txtObservacion->Text = "";
 	}
-	catch (Exception^ excep)
+	catch (Exception^ except)
 	{
-		MessageBox::Show("Espacios necesarios vacios", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		MessageBox::Show(except->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 	}
 	
 }

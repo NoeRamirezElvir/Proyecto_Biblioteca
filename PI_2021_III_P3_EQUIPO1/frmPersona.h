@@ -574,6 +574,7 @@ private: System::Void btnRegistrarPersona_Click(System::Object^ sender, System::
 		int ID = Convert::ToInt32(txtIDPersona->Text);
 		Persona leerPersona;
 		archivoPersonaEntrada.read(reinterpret_cast<char*>(&leerPersona), sizeof(Persona));
+
 		while (!archivoPersonaEntrada.eof())
 		{
 			int id = leerPersona.obtenerID();
