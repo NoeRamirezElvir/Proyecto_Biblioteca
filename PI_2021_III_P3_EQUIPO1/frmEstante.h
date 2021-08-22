@@ -272,33 +272,61 @@ private: System::Void frmEstante_Load(System::Object^ sender, System::EventArgs^
 
 }
 	private: System::Void btnregistrar_Click(System::Object^ sender, System::EventArgs^ e) {
-		ofstream archivoEstanteSalida("Estantes.dat", ios::binary | ios::app | ios::out);
-		if (!archivoEstanteSalida)
+		try
 		{
-			MessageBox::Show("No se pudo abrir el archivo", "Error en el sistema", MessageBoxButtons::OK, MessageBoxIcon::Error);
-			this->Close();
+			ofstream archivoEstanteSalida("Estantes.dat", ios::binary | ios::app | ios::out);
+			if (!archivoEstanteSalida)
+			{
+				MessageBox::Show("No se pudo abrir el archivo", "Error en el sistema", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				this->Close();
+			}
+			//variables String del sistema
+			System::String^ LetraI = txtLi->Text;
+			System::String^ LetraF = txtLf->Text;
+			System::String^ Niveles = txtNiveles->Text;
+			int ID = Convert::ToInt32(txtId->Text);
+
+			//convertir los string
+			std::string LetraIe = marshal_as<std::string>(LetraI);
+			std::string LetraFe = marshal_as<std::string>(LetraF);
+			std::string NivelesE = marshal_as<std::string>(Niveles);
+			Estante estante(ID, LetraIe, LetraFe, NivelesE);
+			if (LetraI = "")
+			{
+				throw gcnew Exception("Ingrese Letra inicial");
+			}
+			else if (LetraI->Length > 1)
+			{
+				throw gcnew Exception("Ingrese solo una letra inicial");
+			}
+			if (LetraF = "")
+			{
+				throw gcnew Exception("Ingrese letra final");
+			}
+			else if (LetraF->Length > 1)
+			{
+				throw gcnew Exception("Ingrese solo una letra final");
+			}
+			if (Niveles == "")
+			{
+				throw gcnew Exception("Ingrese nivel");
+			}
+			else if (Niveles->Length < 10 && Niveles->Length > 0)
+			{
+				throw gcnew Exception("Niveles disponibles del 1 al 10");
+			}
+			archivoEstanteSalida.write(reinterpret_cast<const char*>(&estante), sizeof(Estante));
+			archivoEstanteSalida.close();
+
+			txtId->Text = "";
+			txtLi->Text = "";
+			txtLf->Text = "";
+			txtNiveles->Text = "";
 		}
-		//variables String del sistema
-		System::String^ LetraI = txtLi->Text;
-		System::String^ LetraF = txtLf->Text;
-		System::String^ Niveles = txtNiveles->Text;
-		int ID = Convert::ToInt32(txtId->Text);
-
-		//convertir los string
-		std::string LetraIe = marshal_as<std::string>(LetraI);
-		std::string LetraFe = marshal_as<std::string>(LetraF);
-		std::string NivelesE = marshal_as<std::string>(Niveles);
-
-		Estante estante( ID,LetraIe, LetraFe, NivelesE);
-
-		archivoEstanteSalida.write(reinterpret_cast<const char*>(&estante), sizeof(Estante));
-		archivoEstanteSalida.close();
-
-		////////////////////////////////////
-		txtId->Text = "";
-		txtLi->Text = "";
-		txtLf->Text = "";
-		txtNiveles->Text = "";
+		catch (Exception^ excep)
+		{
+			MessageBox::Show("Se debe llenar todos los campos", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
 	}
 };
 }

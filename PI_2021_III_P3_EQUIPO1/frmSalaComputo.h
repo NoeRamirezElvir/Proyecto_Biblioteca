@@ -54,6 +54,8 @@ namespace PI2021IIIP3EQUIPO1 {
 	private: System::Windows::Forms::PictureBox^ pictureBox1;
 	private: System::Windows::Forms::TextBox^ txtCapacidad;
 	private: System::Windows::Forms::TextBox^ txtHorario;
+	private: System::Windows::Forms::Button^ btnRegistrar;
+	private: System::Windows::Forms::Button^ btnMostrar;
 
 
 
@@ -63,12 +65,12 @@ namespace PI2021IIIP3EQUIPO1 {
 
 
 
-	private: System::Windows::Forms::Button^ button1;
 
 
 
 
-	private: System::Windows::Forms::Button^ button2;
+
+
 	private: System::Windows::Forms::TextBox^ txtId;
 	private: System::Windows::Forms::ComboBox^ cboDisponibilidad;
 	private: System::Windows::Forms::ComboBox^ cboEncargado;
@@ -97,8 +99,8 @@ namespace PI2021IIIP3EQUIPO1 {
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->txtCapacidad = (gcnew System::Windows::Forms::TextBox());
 			this->txtHorario = (gcnew System::Windows::Forms::TextBox());
-			this->button1 = (gcnew System::Windows::Forms::Button());
-			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->btnRegistrar = (gcnew System::Windows::Forms::Button());
+			this->btnMostrar = (gcnew System::Windows::Forms::Button());
 			this->txtId = (gcnew System::Windows::Forms::TextBox());
 			this->cboDisponibilidad = (gcnew System::Windows::Forms::ComboBox());
 			this->cboEncargado = (gcnew System::Windows::Forms::ComboBox());
@@ -183,29 +185,29 @@ namespace PI2021IIIP3EQUIPO1 {
 			this->txtHorario->Size = System::Drawing::Size(115, 20);
 			this->txtHorario->TabIndex = 14;
 			// 
-			// button1
+			// btnRegistrar
 			// 
-			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->btnRegistrar->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button1->Location = System::Drawing::Point(196, 299);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(117, 43);
-			this->button1->TabIndex = 17;
-			this->button1->Text = L"Registrar ";
-			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &frmSalaComputo::button1_Click);
+			this->btnRegistrar->Location = System::Drawing::Point(196, 299);
+			this->btnRegistrar->Name = L"btnRegistrar";
+			this->btnRegistrar->Size = System::Drawing::Size(117, 43);
+			this->btnRegistrar->TabIndex = 17;
+			this->btnRegistrar->Text = L"Registrar ";
+			this->btnRegistrar->UseVisualStyleBackColor = true;
+			this->btnRegistrar->Click += gcnew System::EventHandler(this, &frmSalaComputo::btnRegistrar_Click);
 			// 
-			// button2
+			// btnMostrar
 			// 
-			this->button2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->btnMostrar->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button2->Location = System::Drawing::Point(403, 299);
-			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(103, 43);
-			this->button2->TabIndex = 21;
-			this->button2->Text = L"Mostar Laboratorios";
-			this->button2->UseVisualStyleBackColor = true;
-			this->button2->Click += gcnew System::EventHandler(this, &frmSalaComputo::button2_Click);
+			this->btnMostrar->Location = System::Drawing::Point(403, 299);
+			this->btnMostrar->Name = L"btnMostrar";
+			this->btnMostrar->Size = System::Drawing::Size(103, 43);
+			this->btnMostrar->TabIndex = 21;
+			this->btnMostrar->Text = L"Mostar Laboratorios";
+			this->btnMostrar->UseVisualStyleBackColor = true;
+			this->btnMostrar->Click += gcnew System::EventHandler(this, &frmSalaComputo::btnMostrar_Click);
 			// 
 			// txtId
 			// 
@@ -239,8 +241,8 @@ namespace PI2021IIIP3EQUIPO1 {
 			this->ClientSize = System::Drawing::Size(665, 412);
 			this->Controls->Add(this->cboEncargado);
 			this->Controls->Add(this->cboDisponibilidad);
-			this->Controls->Add(this->button2);
-			this->Controls->Add(this->button1);
+			this->Controls->Add(this->btnMostrar);
+			this->Controls->Add(this->btnRegistrar);
 			this->Controls->Add(this->txtHorario);
 			this->Controls->Add(this->txtId);
 			this->Controls->Add(this->txtCapacidad);
@@ -262,7 +264,7 @@ namespace PI2021IIIP3EQUIPO1 {
 		}
 #pragma endregion
 	
-private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+private: System::Void btnMostrar_Click(System::Object^ sender, System::EventArgs^ e) {
 	frmVisitasSalaComputo^ formulario = gcnew frmVisitasSalaComputo;
 	formulario->Show();
 
@@ -315,32 +317,62 @@ private: System::Void frmSalaComputo_Load(System::Object^ sender, System::EventA
 		empleado.read(reinterpret_cast<char*>(&empleadoNom), sizeof(Empleado));
 	}
 }
-private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-	ofstream SalaComputoSalida("SalasComputo.dat", ios::binary | ios::app | ios::out);
-	if (!SalaComputoSalida)
+private: System::Void btnRegistrar_Click(System::Object^ sender, System::EventArgs^ e) {
+	try
 	{
-		MessageBox::Show("No se pudo abrir el archivo", "Error en el sistema", MessageBoxButtons::OK, MessageBoxIcon::Error);
-		this->Close();
+		ofstream SalaComputoSalida("SalasComputo.dat", ios::binary | ios::app | ios::out);
+		if (!SalaComputoSalida)
+		{
+			MessageBox::Show("No se pudo abrir el archivo", "Error en el sistema", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			this->Close();
+		}
+		int ID = Convert::ToInt32(txtId->Text);
+		int capacidad = Convert::ToInt32(txtCapacidad->Text);
+
+		System::String^ enca = cboEncargado->SelectedItem->ToString();
+		System::String^ disp = cboDisponibilidad->SelectedItem->ToString();
+		System::String^ horario = txtHorario->Text->ToString();
+
+		std::string encargado = marshal_as<std::string>(enca);
+		std::string disponibilidad = marshal_as<std::string>(disp);
+		std::string hora_ = marshal_as<std::string>(horario);
+		SalaComputo sala(ID, hora_, disponibilidad, capacidad, encargado);
+		if (ID.ToString() == "")
+		{
+			throw gcnew Exception("Ingrese ID");
+		}
+		if (capacidad.ToString() == "")
+		{
+			throw gcnew Exception("Ingrese Capacidad");
+		}
+		if (cboEncargado->SelectedItem == nullptr)
+		{
+			throw gcnew Exception("Seleccione Encargado");
+		}
+		if (cboDisponibilidad->SelectedItem == nullptr)
+		{
+			throw gcnew Exception("Seleccione disponibilidad");
+		}
+		if (horario == "")
+		{
+			throw gcnew Exception("Ingrese horario. Ejem: 18:00-21:00");
+		}
+		else if (horario->Length < 9)
+		{
+			throw gcnew Exception("Horario ingresado muy corto");
+		}
+		SalaComputoSalida.write(reinterpret_cast<const char*>(&sala), sizeof(SalaComputo));
+		SalaComputoSalida.close();
+		txtId->Text = "";
+		txtHorario->Text = "";
+		cboDisponibilidad->Text = "";
+		txtCapacidad->Text = "";
+		cboEncargado->Text = "";
 	}
-	int ID = Convert::ToInt32(txtId->Text);
-	int capacidad = Convert::ToInt32(txtCapacidad->Text);
-
-	System::String^ enca = cboEncargado->SelectedItem->ToString();
-	System::String^ disp = cboDisponibilidad->SelectedItem->ToString();
-	System::String^ horario = txtHorario->Text->ToString();
-
-	std::string encargado = marshal_as<std::string>(enca);
-	std::string disponibilidad = marshal_as<std::string>(disp);
-	std::string hora_ = marshal_as<std::string>(horario);
-
-	SalaComputo sala(ID,hora_, disponibilidad, capacidad, encargado);
-	SalaComputoSalida.write(reinterpret_cast<const char*>(&sala), sizeof(SalaComputo));
-	SalaComputoSalida.close();
-	txtId->Text = "";
-	txtHorario->Text = "";
-	cboDisponibilidad->Text = "";
-	txtCapacidad->Text = "";
-	cboEncargado->Text = "";
+	catch (Exception^ excep)
+	{
+		MessageBox::Show("Todos los campos necesarios", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+	}
 }
 };
 }

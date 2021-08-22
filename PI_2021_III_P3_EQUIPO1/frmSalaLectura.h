@@ -203,6 +203,7 @@ namespace PI2021IIIP3EQUIPO1 {
 			this->cboEncargadoSalaL->Name = L"cboEncargadoSalaL";
 			this->cboEncargadoSalaL->Size = System::Drawing::Size(121, 21);
 			this->cboEncargadoSalaL->TabIndex = 13;
+			this->cboEncargadoSalaL->SelectedIndexChanged += gcnew System::EventHandler(this, &frmSalaLectura::cboEncargadoSalaL_SelectedIndexChanged);
 			// 
 			// cboDisponibilidad
 			// 
@@ -284,25 +285,55 @@ namespace PI2021IIIP3EQUIPO1 {
 		}
 	}
 private: System::Void btnRegistrar_Click(System::Object^ sender, System::EventArgs^ e) {
-	ofstream SalaLecturaSalida("Salas de lectura.dat", ios::binary | ios::app | ios::out);
-	if (!SalaLecturaSalida)
+	try
 	{
-		MessageBox::Show("No se pudo abrir el archivo", "Error en el sistema", MessageBoxButtons::OK, MessageBoxIcon::Error);
-		this->Close();
+		ofstream SalaLecturaSalida("Salas de lectura.dat", ios::binary | ios::app | ios::out);
+		if (!SalaLecturaSalida)
+		{
+			MessageBox::Show("No se pudo abrir el archivo", "Error en el sistema", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			this->Close();
+		}
+		int ID = Convert::ToInt32(txtID->Text);
+		int capacidad = Convert::ToInt32(txtCapacidad->Text);
+		System::String^ enca = cboEncargadoSalaL->SelectedItem->ToString();
+		System::String^ disp = cboDisponibilidad->SelectedItem->ToString();
+		std::string encargado = marshal_as<std::string>(enca);
+		std::string disponibilidad = marshal_as<std::string>(disp);
+		if (txtID->Text == "")
+		{
+			throw gcnew Exception("Ingrese ID valido");
+		}
+		if (txtCapacidad->Text == "")
+		{
+			throw gcnew Exception("Ingrese Capacidad");
+		}
+		else if (capacidad < 1)
+		{
+			throw gcnew Exception("Capacidad debe ser mayor a 0");
+		}
+		if (cboDisponibilidad->SelectedText == nullptr)
+		{
+			throw gcnew Exception("Seleccione disponibilidad");
+		}
+		if (cboEncargadoSalaL->SelectedItem == nullptr)
+		{
+			throw gcnew Exception("Seleccione Encargado de Sala");
+		}
+		SalaLectura sala(ID, capacidad, encargado, disponibilidad);
+		SalaLecturaSalida.write(reinterpret_cast<const char*>(&sala), sizeof(SalaLectura));
+		SalaLecturaSalida.close();
+		txtCapacidad->Text = "";
+		txtID->Text = "";
+		cboDisponibilidad->Text = "";
+		cboEncargadoSalaL->Text = "";
+
+		}
+	
+	catch (Exception^ excep)
+	{
+		MessageBox::Show("Se nesecitan todos los valores", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 	}
-	int ID = Convert::ToInt32(txtID->Text);
-	int capacidad = Convert::ToInt32(txtCapacidad->Text);
-	System::String^ enca =cboEncargadoSalaL->SelectedItem->ToString();
-	System::String^ disp = cboDisponibilidad->SelectedItem->ToString();
-	std::string encargado = marshal_as<std::string>(enca);
-	std::string disponibilidad = marshal_as<std::string>(disp);
-	SalaLectura sala(ID,capacidad,encargado,disponibilidad);
-	SalaLecturaSalida.write(reinterpret_cast<const char*>(&sala), sizeof(SalaLectura));
-	SalaLecturaSalida.close();
-	txtCapacidad->Text = "";
-	txtID->Text = "";
-	cboDisponibilidad->Text = "";
-	cboEncargadoSalaL->Text = "";
+	
 
 }
 private: System::Void btnMostrar_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -327,6 +358,8 @@ private: System::Void btnMostrar_Click(System::Object^ sender, System::EventArgs
 		lista->dgvListaSalaL->Rows->Add(ID, encargado, capacidad, disponibilidad);
 		SalaLecturaEntrada.read(reinterpret_cast<char*>(&leerSala), sizeof(SalaLectura));
 	}
+}
+private: System::Void cboEncargadoSalaL_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }

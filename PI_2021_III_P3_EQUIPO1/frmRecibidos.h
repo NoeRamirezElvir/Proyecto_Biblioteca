@@ -372,26 +372,70 @@ private: System::Void frmRecibidos_Load(System::Object^ sender, System::EventArg
 
 }
 private: System::Void btnRegistrarRecibido_Click(System::Object^ sender, System::EventArgs^ e) {
-	ofstream inventarioSalida("Inventario.dat", ios::binary | ios::app | ios::out);
-	if (!inventarioSalida)
+	try
 	{
-		MessageBox::Show("No se pudo abrir el archivo", "Error en el sistema", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		ofstream inventarioSalida("Inventario.dat", ios::binary | ios::app | ios::out);
+		if (!inventarioSalida)
+		{
+			MessageBox::Show("No se pudo abrir el archivo", "Error en el sistema", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
+		int id = Convert::ToInt32(txtID->Text);
+		int cantidad = Convert::ToInt32(txtCantidadL->Text);
+		std::string fecha = marshal_as<std::string>(txtFecha->Text);
+		std::string hora = marshal_as<std::string>(txtHora->Text);
+		std::string encargado = marshal_as<std::string>(cboEncargado->SelectedItem->ToString());
+		std::string proveedor = marshal_as<std::string>(cboProveedor->SelectedItem->ToString());
+		if (txtID->Text == "")
+		{
+			throw gcnew Exception("Ingrese ID valido");
+		}
+		if (txtCantidadL->Text == "")
+		{
+			throw gcnew Exception("Ingrese cantidad de libros");
+		}
+		else if (cantidad < 1)
+		{
+			throw gcnew Exception("cantida debe ser mayor a 0");
+		}
+		if (txtFecha->Text == "")
+		{
+			throw gcnew Exception("Ingrese Fecha DD/MM/AA");
+		}
+		else if (txtFecha->Text->Length < 6)
+		{
+			throw gcnew Exception("Fecha demasiado corta");
+		}
+		if (txtHora->Text == "")
+		{
+			throw gcnew Exception("Ingrese Hora 23:59");
+		}
+		else if (txtHora->Text->Length < 5)
+		{
+			throw gcnew Exception("Hora demasiado corta");
+		}
+		if (cboEncargado->SelectedItem == nullptr)
+		{
+			throw gcnew Exception("Seleccione encargado");
+		}
+		if (cboProveedor->SelectedItem == nullptr)
+		{
+			throw gcnew Exception("Seleccione encargado");
+		}
+		Recibido inventario(id, cantidad, encargado, fecha, proveedor, hora);
+		inventarioSalida.write(reinterpret_cast<const char*>(&inventario), sizeof(Recibido));
+		inventarioSalida.close();
+		txtCantidadL->Text = "";
+		txtFecha->Text = "";
+		txtHora->Text = "";
+		txtID->Text = "";
+		cboEncargado->Text = "";
+		cboProveedor->Text = "";
 	}
-	int id = Convert::ToInt32(txtID->Text);
-	int cantidad = Convert::ToInt32(txtCantidadL->Text);
-	std::string fecha = marshal_as<std::string>(txtFecha->Text);
-	std::string hora = marshal_as<std::string>(txtHora->Text);
-	std::string encargado= marshal_as<std::string>(cboEncargado->SelectedItem->ToString());
-	std::string proveedor = marshal_as<std::string>(cboProveedor->SelectedItem->ToString());
-	Recibido inventario(id, cantidad, encargado, fecha, proveedor,hora);
-	inventarioSalida.write(reinterpret_cast<const char*>(&inventario), sizeof(Recibido));
-	inventarioSalida.close();
-	txtCantidadL->Text = "";
-	txtFecha->Text = "";
-	txtHora->Text = "";
-	txtID->Text = "";
-	cboEncargado->Text = "";
-	cboProveedor->Text = "";
+	catch (Exception^ excep)
+	{
+		MessageBox::Show("Campos incompletos", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+	}
+	
 
 }
 };

@@ -353,45 +353,89 @@ private: System::Void frmComputadora_Load(System::Object^ sender, System::EventA
 	txtObservacion->Text = "";
 }
 private: System::Void btnAgregar_Click(System::Object^ sender, System::EventArgs^ e) {
-	ofstream archivoComputadoraSalida("Computadoras.dat", ios::binary | ios::app | ios::out);
-	if (!archivoComputadoraSalida)
+	try
 	{
-		MessageBox::Show("No se pudo abrir el archivo", "Error en el sistema", MessageBoxButtons::OK, MessageBoxIcon::Error);
-		this->Close();
-	}
-	//variables String del sistema
-	System::String^ marca = txtMarca->Text;
-	System::String^ modelo = txtModelo->Text;
-	System::String^ disco = txtHdd->Text;
-	System::String^ ram = txtRam->Text;
-	System::String^ tipo = cboTipo->SelectedItem->ToString();
-	System::String^ oS = cboOs->SelectedItem->ToString();
-	System::String^ observacion = txtObservacion->Text;
-	int ID = Convert::ToInt32(txtId->Text);
-	
-	//convertir los string
-	std::string marcaC = marshal_as<std::string>(marca);
-	std::string modeloC = marshal_as<std::string>(modelo);
-	std::string discoC = marshal_as<std::string>(disco);
-	std::string ramC = marshal_as<std::string>(ram);
-	std::string tipoC = marshal_as<std::string>(tipo);
-	std::string oSC = marshal_as<std::string>(oS);
-	std::string obserC = marshal_as<std::string>(observacion);
-	Computadora computadora(ID, marcaC, modeloC, discoC, ramC, tipoC, oSC, obserC);
-	
-	archivoComputadoraSalida.write(reinterpret_cast<const char*>(&computadora), sizeof(Computadora));
-	archivoComputadoraSalida.close();
+		ofstream archivoComputadoraSalida("Computadoras.dat", ios::binary | ios::app | ios::out);
+		if (!archivoComputadoraSalida)
+		{
+			MessageBox::Show("No se pudo abrir el archivo", "Error en el sistema", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			this->Close();
+		}
+		//variables String del sistema
+		System::String^ marca = txtMarca->Text;
+		System::String^ modelo = txtModelo->Text;
+		System::String^ disco = txtHdd->Text;
+		System::String^ ram = txtRam->Text;
+		System::String^ tipo = cboTipo->SelectedItem->ToString();
+		System::String^ oS = cboOs->SelectedItem->ToString();
+		System::String^ observacion = txtObservacion->Text;
+		int ID = Convert::ToInt32(txtId->Text);
 
-	////////////////////////////////////
-	txtId->Text = "";
-	txtMarca->Text = "";
-	txtModelo->Text = "";
-	txtHdd->Text = "";
-	txtRam->Text = "";
-	cboTipo->Text = "";
-	cboOs->Text = "";
-	txtObservacion->Text = "";
-	////////////////////////////////////
+		//convertir los string
+		std::string marcaC = marshal_as<std::string>(marca);
+		std::string modeloC = marshal_as<std::string>(modelo);
+		std::string discoC = marshal_as<std::string>(disco);
+		std::string ramC = marshal_as<std::string>(ram);
+		std::string tipoC = marshal_as<std::string>(tipo);
+		std::string oSC = marshal_as<std::string>(oS);
+		std::string obserC = marshal_as<std::string>(observacion);
+		Computadora computadora(ID, marcaC, modeloC, discoC, ramC, tipoC, oSC, obserC);
+		if (marca == "")
+		{
+			throw gcnew Exception("Ingrese Marca");
+		}
+		else if (marca->Length < 2)
+		{
+			throw gcnew Exception("Marca ingresada muy corta");
+		}
+		if (modelo == "")
+		{
+			throw gcnew Exception("Ingrese modelo");
+		}
+		else if (modelo->Length < 4)
+		{
+			throw gcnew Exception("Modelo ingresado muy corto");
+		}
+		if (disco == "")
+		{
+			throw gcnew Exception("ingrese capacidad del disco");
+		}
+		else if (disco->Length < 4)
+		{
+			throw gcnew Exception("valor disco muy corto");
+		}
+		if (ram == "")
+		{
+			throw gcnew Exception("Ingrese Tamaño memoria RAM");
+		}
+		else if (ram->Length < 3)
+		{
+			throw gcnew Exception("valor RAM muy corto");
+		}
+		if (cboTipo->SelectedItem == nullptr)
+		{
+			throw gcnew Exception("Seleccione Tipo");
+		}
+		if (cboOs->SelectedItem == nullptr)
+		{
+			throw gcnew Exception("Seleccione el Sistema Operativo");
+		}
+		archivoComputadoraSalida.write(reinterpret_cast<const char*>(&computadora), sizeof(Computadora));
+		archivoComputadoraSalida.close();
+		txtId->Text = "";
+		txtMarca->Text = "";
+		txtModelo->Text = "";
+		txtHdd->Text = "";
+		txtRam->Text = "";
+		cboTipo->Text = "";
+		cboOs->Text = "";
+		txtObservacion->Text = "";
+	}
+	catch (Exception^ excep)
+	{
+		MessageBox::Show("Espacios necesarios vacios", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+	}
+	
 }
 private: System::Void btnMostar_Click(System::Object^ sender, System::EventArgs^ e) {
 

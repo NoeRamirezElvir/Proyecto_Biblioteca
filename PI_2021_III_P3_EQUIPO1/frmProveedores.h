@@ -42,9 +42,12 @@ namespace PI2021IIIP3EQUIPO1 {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::Button^ button1;
+	private: System::Windows::Forms::Button^ btnRegistrar;
+	private: System::Windows::Forms::Button^ btnMostrar;
 	protected:
-	private: System::Windows::Forms::Button^ button2;
+
+	protected:
+
 	private: System::Windows::Forms::Label^ lblIDProveedor;
 	private: System::Windows::Forms::Label^ lblNombreProveedor;
 	private: System::Windows::Forms::Label^ lblFecha;
@@ -78,8 +81,8 @@ namespace PI2021IIIP3EQUIPO1 {
 		void InitializeComponent(void)
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(frmProveedores::typeid));
-			this->button1 = (gcnew System::Windows::Forms::Button());
-			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->btnRegistrar = (gcnew System::Windows::Forms::Button());
+			this->btnMostrar = (gcnew System::Windows::Forms::Button());
 			this->lblIDProveedor = (gcnew System::Windows::Forms::Label());
 			this->lblNombreProveedor = (gcnew System::Windows::Forms::Label());
 			this->lblFecha = (gcnew System::Windows::Forms::Label());
@@ -101,42 +104,42 @@ namespace PI2021IIIP3EQUIPO1 {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
 			// 
-			// button1
+			// btnRegistrar
 			// 
-			this->button1->BackColor = System::Drawing::Color::SeaGreen;
-			this->button1->FlatAppearance->BorderColor = System::Drawing::Color::Black;
-			this->button1->FlatAppearance->BorderSize = 2;
-			this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->btnRegistrar->BackColor = System::Drawing::Color::SeaGreen;
+			this->btnRegistrar->FlatAppearance->BorderColor = System::Drawing::Color::Black;
+			this->btnRegistrar->FlatAppearance->BorderSize = 2;
+			this->btnRegistrar->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->btnRegistrar->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button1.Image")));
-			this->button1->Location = System::Drawing::Point(260, 357);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(116, 47);
-			this->button1->TabIndex = 0;
-			this->button1->Text = L"Registrar";
-			this->button1->TextImageRelation = System::Windows::Forms::TextImageRelation::ImageBeforeText;
-			this->button1->UseVisualStyleBackColor = false;
-			this->button1->Click += gcnew System::EventHandler(this, &frmProveedores::button1_Click);
+			this->btnRegistrar->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btnRegistrar.Image")));
+			this->btnRegistrar->Location = System::Drawing::Point(260, 357);
+			this->btnRegistrar->Name = L"btnRegistrar";
+			this->btnRegistrar->Size = System::Drawing::Size(116, 47);
+			this->btnRegistrar->TabIndex = 0;
+			this->btnRegistrar->Text = L"Registrar";
+			this->btnRegistrar->TextImageRelation = System::Windows::Forms::TextImageRelation::ImageBeforeText;
+			this->btnRegistrar->UseVisualStyleBackColor = false;
+			this->btnRegistrar->Click += gcnew System::EventHandler(this, &frmProveedores::btnRegistrar_Click);
 			// 
-			// button2
+			// btnMostrar
 			// 
-			this->button2->BackColor = System::Drawing::Color::SeaGreen;
-			this->button2->FlatAppearance->BorderColor = System::Drawing::Color::Black;
-			this->button2->FlatAppearance->BorderSize = 2;
-			this->button2->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->button2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->btnMostrar->BackColor = System::Drawing::Color::SeaGreen;
+			this->btnMostrar->FlatAppearance->BorderColor = System::Drawing::Color::Black;
+			this->btnMostrar->FlatAppearance->BorderSize = 2;
+			this->btnMostrar->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->btnMostrar->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button2.Image")));
-			this->button2->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
-			this->button2->Location = System::Drawing::Point(382, 357);
-			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(109, 47);
-			this->button2->TabIndex = 1;
-			this->button2->Text = L"Mostrar";
-			this->button2->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
-			this->button2->UseVisualStyleBackColor = false;
-			this->button2->Click += gcnew System::EventHandler(this, &frmProveedores::button2_Click);
+			this->btnMostrar->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"btnMostrar.Image")));
+			this->btnMostrar->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
+			this->btnMostrar->Location = System::Drawing::Point(382, 357);
+			this->btnMostrar->Name = L"btnMostrar";
+			this->btnMostrar->Size = System::Drawing::Size(109, 47);
+			this->btnMostrar->TabIndex = 1;
+			this->btnMostrar->Text = L"Mostrar";
+			this->btnMostrar->TextAlign = System::Drawing::ContentAlignment::MiddleRight;
+			this->btnMostrar->UseVisualStyleBackColor = false;
+			this->btnMostrar->Click += gcnew System::EventHandler(this, &frmProveedores::btnMostrar_Click);
 			// 
 			// lblIDProveedor
 			// 
@@ -328,8 +331,8 @@ namespace PI2021IIIP3EQUIPO1 {
 			this->Controls->Add(this->lblFecha);
 			this->Controls->Add(this->lblNombreProveedor);
 			this->Controls->Add(this->lblIDProveedor);
-			this->Controls->Add(this->button2);
-			this->Controls->Add(this->button1);
+			this->Controls->Add(this->btnMostrar);
+			this->Controls->Add(this->btnRegistrar);
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Name = L"frmProveedores";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
@@ -341,31 +344,39 @@ namespace PI2021IIIP3EQUIPO1 {
 
 		}
 #pragma endregion
-	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
-		frmListaProveedores^ listaProveedores = gcnew frmListaProveedores;
-		listaProveedores->Show();
-		ifstream archivoProveedoresEntrada("Proveedores.dat", ios::binary | ios::app | ios::in);
-		if (!archivoProveedoresEntrada)
+	private: System::Void btnMostrar_Click(System::Object^ sender, System::EventArgs^ e) {
+		
+		try
 		{
-			MessageBox::Show("No se pudo abrir el archivo", "Error en el sistema", MessageBoxButtons::OK, MessageBoxIcon::Error);
-			this->Close();
-		}
-		Proveedor leerProveedor;
-		archivoProveedoresEntrada.read(reinterpret_cast<char*>(&leerProveedor), sizeof(Proveedor));
-		while (!archivoProveedoresEntrada.eof())
-		{
-			System::String^ nombre = marshal_as<System::String^>(leerProveedor.obtenerNombre());
-			System::String^ fecha = marshal_as<System::String^>(leerProveedor.obtenerFecha());
-			System::String^ categoria = marshal_as<System::String^>(leerProveedor.obtenerCategoria());
-			System::String^ RTN = marshal_as<System::String^>(leerProveedor.obtenerRtn());
-			System::String^ direccion = marshal_as<System::String^>(leerProveedor.obtenerDireccion());
-			System::String^ ciudad = marshal_as<System::String^>(leerProveedor.obtenerCiudad());
-			std::string id = to_string(leerProveedor.obtenerID());
-			std::string tel = to_string(leerProveedor.obtenerTelefono());
-			System::String^ ID = marshal_as<System::String^>(id);
-			System::String^ telefono = marshal_as<System::String^>(tel);
-			listaProveedores->dgvProveedores->Rows->Add(ID, nombre, telefono, RTN, fecha, ciudad, direccion);
+			frmListaProveedores^ listaProveedores = gcnew frmListaProveedores;
+			listaProveedores->Show();
+			ifstream archivoProveedoresEntrada("Proveedores.dat", ios::binary | ios::app | ios::in);
+			if (!archivoProveedoresEntrada)
+			{
+				MessageBox::Show("No se pudo abrir el archivo", "Error en el sistema", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				this->Close();
+			}
+			Proveedor leerProveedor;
 			archivoProveedoresEntrada.read(reinterpret_cast<char*>(&leerProveedor), sizeof(Proveedor));
+			while (!archivoProveedoresEntrada.eof())
+			{
+				std::string id = to_string(leerProveedor.obtenerID());
+				System::String^ ID = marshal_as<System::String^>(id);
+				System::String^ nombre = marshal_as<System::String^>(leerProveedor.obtenerNombre());
+				System::String^ fecha = marshal_as<System::String^>(leerProveedor.obtenerFecha());
+				std::string tel = to_string(leerProveedor.obtenerTelefono());
+				System::String^ telefono = marshal_as<System::String^>(tel);
+				System::String^ categoria = marshal_as<System::String^>(leerProveedor.obtenerCategoria());
+				System::String^ RTN = marshal_as<System::String^>(leerProveedor.obtenerRtn());
+				System::String^ ciudad = marshal_as<System::String^>(leerProveedor.obtenerCiudad());
+				System::String^ direccion = marshal_as<System::String^>(leerProveedor.obtenerDireccion());
+				listaProveedores->dgvProveedores->Rows->Add(ID, nombre, telefono, RTN, fecha, ciudad, direccion);
+				archivoProveedoresEntrada.read(reinterpret_cast<char*>(&leerProveedor), sizeof(Proveedor));
+			}
+		}
+		catch (Exception^ excep)
+		{
+			MessageBox::Show(excep->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
 	}
 private: System::Void frmProveedores_Load(System::Object^ sender, System::EventArgs^ e) {
@@ -376,38 +387,103 @@ private: System::Void frmProveedores_Load(System::Object^ sender, System::EventA
 		this->Close();
 	}
 }
-private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-	ofstream archivoProveedoresSalida("Proveedores.dat", ios::binary | ios::app | ios::out);
-	if (!archivoProveedoresSalida)
+private: System::Void btnRegistrar_Click(System::Object^ sender, System::EventArgs^ e) {
+	
+	try
 	{
-		MessageBox::Show("No se pudo abrir el archivo", "Error en el sistema", MessageBoxButtons::OK, MessageBoxIcon::Error);
-		this->Close();
+		ofstream archivoProveedoresSalida("Proveedores.dat", ios::binary | ios::app | ios::out);
+		if (!archivoProveedoresSalida)
+		{
+			MessageBox::Show("No se pudo abrir el archivo", "Error en el sistema", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			this->Close();
+			throw gcnew Exception("No se pudo abrir el archivo");
+		}
+		int id = Convert::ToInt32(txtIDProveedor->Text);
+		System::String^ nom = txtNombre->Text;
+		System::String^ fec = txtFecha->Text;
+		int tel = Convert::ToInt32(txtTelefono->Text);
+		System::String^ cat = txtCategoria->Text;
+		System::String^ rtn = txtRTN->Text;
+		System::String^ ciud = txtCiudad->Text;
+		System::String^ dir = txtDireccion->Text;
+		std::string nombre = marshal_as<std::string>(nom);
+		std::string fecha = marshal_as<std::string>(fec);
+		std::string categoria = marshal_as<std::string>(cat);
+		std::string RTN = marshal_as<std::string>(rtn);
+		std::string ciudad = marshal_as<std::string>(ciud);
+		std::string direccion = marshal_as<std::string>(dir);
+		if (id.MinValue == 1)
+		{
+			throw gcnew Exception("Ingrese ID valido");
+		}
+		if (nom == "")
+		{
+			throw gcnew Exception("Ingrese nombre");
+		}
+		else if (nom->Length < 4)
+		{
+			throw gcnew Exception("La nombre demasiado corto");
+		}
+		if (fec == "")
+		{
+			throw gcnew Exception("Ingrese Fecha");
+		}
+		else if (fec->Length < 6)
+		{
+			throw gcnew Exception("Fecha demasiado corta");
+		}
+		if (txtTelefono->Text == "")
+		{
+			throw gcnew Exception("Ingrese Telefono valido");
+		}
+		if (cat == "")
+		{
+			throw gcnew Exception("Ingrese Categoria");
+		}
+		else if (cat->Length < 1)
+		{
+			throw gcnew Exception("Categoria ingresada demasiado corto");
+		}
+		if (rtn == "")
+		{
+			throw gcnew Exception("Ingrese RTN");
+		}
+		else if (rtn->Length < 15)
+		{
+			throw gcnew Exception("RTN demasiado corto");
+		}
+		if (ciud == "")
+		{
+			throw gcnew Exception("Ingrese Ciudad");
+		}
+		else if (ciud->Length < 5)
+		{
+			throw gcnew Exception("Ciudad ingresada demasiado corta");
+		}
+		if (dir == "")
+		{
+			throw gcnew Exception("Ingrese Dirección");
+		}
+		else if (dir->Length < 5)
+		{
+			throw gcnew Exception("Dirección demasiado corta");
+		}
+		Proveedor proveedor(id, tel, nombre, RTN, fecha, direccion, ciudad, categoria);
+		archivoProveedoresSalida.write(reinterpret_cast<const char*>(&proveedor), sizeof(Proveedor));
+		archivoProveedoresSalida.close();
+		txtCategoria->Text = "";
+		txtCiudad->Text = "";
+		txtDireccion->Text = "";
+		txtFecha->Text = "";
+		txtIDProveedor->Text = "";
+		txtNombre->Text = "";
+		txtRTN->Text = "";
+		txtTelefono->Text = "";
 	}
-	int id = Convert::ToInt32(txtIDProveedor->Text);
-	int tel = Convert::ToInt32(txtTelefono->Text);
-	System::String^ nom = txtNombre->Text;
-	System::String^ fec = txtFecha->Text;
-	System::String^ cat = txtCategoria->Text;
-	System::String^ rtn = txtRTN->Text;
-	System::String^ dir = txtDireccion->Text;
-	System::String^ ciud = txtCiudad->Text;
-	std::string nombre = marshal_as<std::string>(nom);
-	std::string fecha = marshal_as<std::string>(fec);
-	std::string categoria = marshal_as<std::string>(cat);
-	std::string RTN = marshal_as<std::string>(rtn);
-	std::string direccion = marshal_as<std::string>(dir);
-	std::string ciudad = marshal_as<std::string>(ciud);
-	Proveedor proveedor(id, tel, nombre, RTN, fecha, direccion, ciudad, categoria);
-	archivoProveedoresSalida.write(reinterpret_cast<const char*>(&proveedor), sizeof(Proveedor));
-	archivoProveedoresSalida.close();
-	txtCategoria->Text = "";
-	txtCiudad->Text = "";
-	txtDireccion->Text = "";
-	txtFecha->Text = "";
-	txtIDProveedor->Text = "";
-	txtNombre->Text = "";
-	txtRTN->Text = "";
-	txtTelefono->Text = "";
+	catch (Exception^ excep)
+	{
+		MessageBox::Show(excep->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+	}
 }
 };
 }

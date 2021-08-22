@@ -186,7 +186,7 @@ namespace PI2021IIIP3EQUIPO1 {
 			this->btnAgregar->TabIndex = 8;
 			this->btnAgregar->Text = L"Agregar Sucursal";
 			this->btnAgregar->UseVisualStyleBackColor = false;
-			this->btnAgregar->Click += gcnew System::EventHandler(this, &frmSucursal::button1_Click);
+			this->btnAgregar->Click += gcnew System::EventHandler(this, &frmSucursal::btnAgregar_Click);
 			// 
 			// pictureBox1
 			// 
@@ -228,7 +228,7 @@ namespace PI2021IIIP3EQUIPO1 {
 			this->btnMostrar->TabIndex = 8;
 			this->btnMostrar->Text = L"Mostrar Sucursales";
 			this->btnMostrar->UseVisualStyleBackColor = false;
-			this->btnMostrar->Click += gcnew System::EventHandler(this, &frmSucursal::button2_Click);
+			this->btnMostrar->Click += gcnew System::EventHandler(this, &frmSucursal::btnMostrar_Click);
 			// 
 			// frmSucursal
 			// 
@@ -276,39 +276,72 @@ namespace PI2021IIIP3EQUIPO1 {
 		txtNombre->Text = "";
 
 	}
-private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-	ofstream archivoSucursalSalida("Sucursales.dat", ios::binary | ios::app | ios::out);
-	if (!archivoSucursalSalida)
+private: System::Void btnAgregar_Click(System::Object^ sender, System::EventArgs^ e) {
+	try
 	{
-		MessageBox::Show("No se pudo abrir el archivo", "Error en el sistema", MessageBoxButtons::OK, MessageBoxIcon::Error);
-		this->Close();
+		ofstream archivoSucursalSalida("Sucursales.dat", ios::binary | ios::app | ios::out);
+		if (!archivoSucursalSalida)
+		{
+			MessageBox::Show("No se pudo abrir el archivo", "Error en el sistema", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			this->Close();
+		}
+		//variables String del sistema
+		System::String^ Nombre = txtNombre->Text;
+		System::String^ ciudad = cboCiudad->SelectedItem->ToString();
+		System::String^ direccion = txtDireccion->Text;
+		System::String^ empleados = txtCantEmpleados->Text;
+		int ID = Convert::ToInt32(txtId->Text);
+
+		//convertir los string
+		std::string ciudadC = marshal_as<std::string>(ciudad);
+		std::string direccionC = marshal_as<std::string>(direccion);
+		std::string empleadosC = marshal_as<std::string>(empleados);
+		std::string nombreC = marshal_as<std::string>(Nombre);
+		if (ID.ToString() == "")
+		{
+			throw gcnew Exception("Ingrese ID de Sucursal");
+		}
+		if (Nombre == "")
+		{
+			throw gcnew Exception("Ingrese Nombre de sucursal");
+		}
+		else if (Nombre->Length < 5)
+		{
+			throw gcnew Exception("Nombre sucursal demasiado corto");
+		}
+		if (cboCiudad->SelectedItem == nullptr)
+		{
+			throw gcnew Exception("Seleccione Ciudad de Sucursal");
+		}
+		if (direccion = "")
+		{
+			throw gcnew Exception("Ingrese direccion de sucursal");
+		}
+		else if (direccion->Length < 5)
+		{
+			throw gcnew Exception("Dirección sucursal demasiado corto");
+		}
+		if (empleados == "")
+		{
+			throw gcnew Exception("Ingrese cantidad de Empleados");
+		}
+		Sucursal sucursal(ID, nombreC, ciudadC, direccionC, empleadosC);
+		archivoSucursalSalida.write(reinterpret_cast<const char*>(&sucursal), sizeof(Sucursal));
+		archivoSucursalSalida.close();
+
+		txtId->Text = "";
+		cboCiudad->Text = "";
+		txtDireccion->Text = "";
+		txtCantEmpleados->Text = "";
+		txtNombre->Text = "";
 	}
-	//variables String del sistema
-	System::String^ Nombre = txtNombre->Text;
-	System::String^ ciudad = cboCiudad->SelectedItem->ToString();
-	System::String^ direccion = txtDireccion->Text;
-	System::String^ empleados = txtCantEmpleados->Text;
-	int ID = Convert::ToInt32(txtId->Text);
-
-	//convertir los string
-	std::string ciudadC = marshal_as<std::string>(ciudad);
-	std::string direccionC = marshal_as<std::string>(direccion);
-	std::string empleadosC = marshal_as<std::string>(empleados);
-	std::string nombreC = marshal_as<std::string>(Nombre);
-	Sucursal sucursal(ID, nombreC, ciudadC, direccionC, empleadosC);
-
-	archivoSucursalSalida.write(reinterpret_cast<const char*>(&sucursal), sizeof(Sucursal));
-	archivoSucursalSalida.close();
-
-	////////////////////////////////////
-	txtId->Text = "";
-	cboCiudad->Text = "";
-	txtDireccion->Text = "";
-	txtCantEmpleados->Text = "";
-	txtNombre->Text = "";
+	catch (Exception^ excep)
+	{
+		MessageBox::Show("Llenar campos vacíos", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+	}
 
 }
-private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+private: System::Void btnMostrar_Click(System::Object^ sender, System::EventArgs^ e) {
 	frmListaSucursales^ formularioS = gcnew frmListaSucursales;
 	formularioS->Show();
 

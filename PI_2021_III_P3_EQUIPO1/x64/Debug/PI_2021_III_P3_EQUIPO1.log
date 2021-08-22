@@ -1,7 +1,17 @@
-﻿  frmInicio.cpp
-C:\Users\elvir\Desktop\Biblioteca-rama-paola\Nueva carpeta\Proyecto_Biblioteca\PI_2021_III_P3_EQUIPO1\frmInicio.cpp(5,33): warning C4829: Parámetros posiblemente incorrectos para la función main. Utilice 'int main(Platform::Array<Platform::String^>^ argv)'
-  frmLibro.cpp
-  frmListaLibros.cpp
+﻿  frmComputadora.cpp
+C:\Users\UNAPS14\source\repos\Proyecto_Biblioteca\PI_2021_III_P3_EQUIPO1\frmComputadora.h(434,20): warning C4101: 'excep': variable local sin referencia
+  frmEstante.cpp
+C:\Users\UNAPS14\source\repos\Proyecto_Biblioteca\PI_2021_III_P3_EQUIPO1\frmEstante.h(326,21): warning C4101: 'excep': variable local sin referencia
+  frmInicio.cpp
+C:\Users\UNAPS14\source\repos\Proyecto_Biblioteca\PI_2021_III_P3_EQUIPO1\frmSucursal.h(338,20): warning C4101: 'excep': variable local sin referencia
+C:\Users\UNAPS14\source\repos\Proyecto_Biblioteca\PI_2021_III_P3_EQUIPO1\frmSalaComputo.h(372,20): warning C4101: 'excep': variable local sin referencia
+C:\Users\UNAPS14\source\repos\Proyecto_Biblioteca\PI_2021_III_P3_EQUIPO1\frmComputadora.h(434,20): warning C4101: 'excep': variable local sin referencia
+C:\Users\UNAPS14\source\repos\Proyecto_Biblioteca\PI_2021_III_P3_EQUIPO1\frmEstante.h(326,21): warning C4101: 'excep': variable local sin referencia
+C:\Users\UNAPS14\source\repos\Proyecto_Biblioteca\PI_2021_III_P3_EQUIPO1\frmRecibidos.h(434,20): warning C4101: 'excep': variable local sin referencia
+C:\Users\UNAPS14\source\repos\Proyecto_Biblioteca\PI_2021_III_P3_EQUIPO1\frmSalaLectura.h(332,20): warning C4101: 'excep': variable local sin referencia
+C:\Users\UNAPS14\source\repos\Proyecto_Biblioteca\PI_2021_III_P3_EQUIPO1\frmInicio.cpp(5,33): warning C4829: Parámetros posiblemente incorrectos para la función main. Utilice 'int main(Platform::Array<Platform::String^>^ argv)'
+  frmSucursal.cpp
+C:\Users\UNAPS14\source\repos\Proyecto_Biblioteca\PI_2021_III_P3_EQUIPO1\frmSucursal.h(338,20): warning C4101: 'excep': variable local sin referencia
   Generando código...
   Cliente.obj : se encontró un módulo MSIL; vinculación incremental deshabilitada para MSIL; ejecutando vínculo completo
-  PI_2021_III_P3_EQUIPO1.vcxproj -> C:\Users\elvir\Desktop\Biblioteca-rama-paola\Nueva carpeta\Proyecto_Biblioteca\x64\Debug\PI_2021_III_P3_EQUIPO1.exe
+  PI_2021_III_P3_EQUIPO1.vcxproj -> C:\Users\UNAPS14\Source\Repos\Proyecto_Biblioteca\x64\Debug\PI_2021_III_P3_EQUIPO1.exe

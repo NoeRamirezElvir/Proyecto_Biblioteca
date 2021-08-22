@@ -156,3 +156,35 @@ C:\Users\elvir\Desktop\Biblioteca-rama-paola\Nueva carpeta\Proyecto_Biblioteca\P
 C:\Users\elvir\Desktop\Biblioteca-rama-paola\Nueva carpeta\Proyecto_Biblioteca\PI_2021_III_P3_EQUIPO1\x64\Debug\PI2021IIIP3EQUIPO1.frmSucursal.resources
 C:\Users\elvir\Desktop\Biblioteca-rama-paola\Nueva carpeta\Proyecto_Biblioteca\PI_2021_III_P3_EQUIPO1\x64\Debug\PI2021IIIP3EQUIPO1.frmVisitasSalaComputo.resources
 C:\Users\elvir\Desktop\Biblioteca-rama-paola\Nueva carpeta\Proyecto_Biblioteca\PI_2021_III_P3_EQUIPO1\x64\Debug\PI_2021_III_P3_EQUIPO1.vcxproj.GenerateResource.cache
+C:\Users\UNAPS14\source\repos\Proyecto_Biblioteca\PI_2021_III_P3_EQUIPO1\x64\Debug\PI_2021_III_P3_EQUIPO1.vcxproj.AssemblyReference.cache
+C:\Users\UNAPS14\source\repos\Proyecto_Biblioteca\PI_2021_III_P3_EQUIPO1\x64\Debug\PI2021IIIP3EQUIPO1.frmBiblioteca.resources
+C:\Users\UNAPS14\source\repos\Proyecto_Biblioteca\PI_2021_III_P3_EQUIPO1\x64\Debug\PI2021IIIP3EQUIPO1.frmCliente.resources
+C:\Users\UNAPS14\source\repos\Proyecto_Biblioteca\PI_2021_III_P3_EQUIPO1\x64\Debug\PI2021IIIP3EQUIPO1.frmComputadora.resources
+C:\Users\UNAPS14\source\repos\Proyecto_Biblioteca\PI_2021_III_P3_EQUIPO1\x64\Debug\PI2021IIIP3EQUIPO1.frmDaño.resources
+C:\Users\UNAPS14\source\repos\Proyecto_Biblioteca\PI_2021_III_P3_EQUIPO1\x64\Debug\PI2021IIIP3EQUIPO1.frmEmpleado.resources
+C:\Users\UNAPS14\source\repos\Proyecto_Biblioteca\PI_2021_III_P3_EQUIPO1\x64\Debug\PI2021IIIP3EQUIPO1.frmEstante.resources
+C:\Users\UNAPS14\source\repos\Proyecto_Biblioteca\PI_2021_III_P3_EQUIPO1\x64\Debug\PI2021IIIP3EQUIPO1.frmFactura.resources
+C:\Users\UNAPS14\source\repos\Proyecto_Biblioteca\PI_2021_III_P3_EQUIPO1\x64\Debug\PI2021IIIP3EQUIPO1.frmInicio.resources
+C:\Users\UNAPS14\source\repos\Proyecto_Biblioteca\PI_2021_III_P3_EQUIPO1\x64\Debug\PI2021IIIP3EQUIPO1.frmInventario.resources
+C:\Users\UNAPS14\source\repos\Proyecto_Biblioteca\PI_2021_III_P3_EQUIPO1\x64\Debug\PI2021IIIP3EQUIPO1.frmLibro.resources
+C:\Users\UNAPS14\source\repos\Proyecto_Biblioteca\PI_2021_III_P3_EQUIPO1\x64\Debug\PI2021IIIP3EQUIPO1.frmLibrosEstante.resources
+C:\Users\UNAPS14\source\repos\Proyecto_Biblioteca\PI_2021_III_P3_EQUIPO1\x64\Debug\PI2021IIIP3EQUIPO1.frmListaCliente.resources
+C:\Users\UNAPS14\source\repos\Proyecto_Biblioteca\PI_2021_III_P3_EQUIPO1\x64\Debug\PI2021IIIP3EQUIPO1.frmListaDaños.resources
+C:\Users\UNAPS14\source\repos\Proyecto_Biblioteca\PI_2021_III_P3_EQUIPO1\x64\Debug\PI2021IIIP3EQUIPO1.frmListaEmpleado.resources
+C:\Users\UNAPS14\source\repos\Proyecto_Biblioteca\PI_2021_III_P3_EQUIPO1\x64\Debug\PI2021IIIP3EQUIPO1.frmListaFactura.resources
+C:\Users\UNAPS14\source\repos\Proyecto_Biblioteca\PI_2021_III_P3_EQUIPO1\x64\Debug\PI2021IIIP3EQUIPO1.frmListaLibros.resources
+C:\Users\UNAPS14\source\repos\Proyecto_Biblioteca\PI_2021_III_P3_EQUIPO1\x64\Debug\PI2021IIIP3EQUIPO1.frmListaPersona.resources
+C:\Users\UNAPS14\source\repos\Proyecto_Biblioteca\PI_2021_III_P3_EQUIPO1\x64\Debug\PI2021IIIP3EQUIPO1.frmListaPrestamo.resources
+C:\Users\UNAPS14\source\repos\Proyecto_Biblioteca\PI_2021_III_P3_EQUIPO1\x64\Debug\PI2021IIIP3EQUIPO1.frmListaProveedores.resources
+C:\Users\UNAPS14\source\repos\Proyecto_Biblioteca\PI_2021_III_P3_EQUIPO1\x64\Debug\PI2021IIIP3EQUIPO1.frmListaSalaLectura.resources
+C:\Users\UNAPS14\source\repos\Proyecto_Biblioteca\PI_2021_III_P3_EQUIPO1\x64\Debug\PI2021IIIP3EQUIPO1.frmListaSucursales.resources
+C:\Users\UNAPS14\source\repos\Proyecto_Biblioteca\PI_2021_III_P3_EQUIPO1\x64\Debug\PI2021IIIP3EQUIPO1.frmPersona.resources
+C:\Users\UNAPS14\source\repos\Proyecto_Biblioteca\PI_2021_III_P3_EQUIPO1\x64\Debug\PI2021IIIP3EQUIPO1.frmPrestamo.resources
+C:\Users\UNAPS14\source\repos\Proyecto_Biblioteca\PI_2021_III_P3_EQUIPO1\x64\Debug\PI2021IIIP3EQUIPO1.frmProveedores.resources
+C:\Users\UNAPS14\source\repos\Proyecto_Biblioteca\PI_2021_III_P3_EQUIPO1\x64\Debug\PI2021IIIP3EQUIPO1.frmRecibidos.resources
+C:\Users\UNAPS14\source\repos\Proyecto_Biblioteca\PI_2021_III_P3_EQUIPO1\x64\Debug\PI2021IIIP3EQUIPO1.frmRegistroComputadoras.resources
+C:\Users\UNAPS14\source\repos\Proyecto_Biblioteca\PI_2021_III_P3_EQUIPO1\x64\Debug\PI2021IIIP3EQUIPO1.frmSalaComputo.resources
+C:\Users\UNAPS14\source\repos\Proyecto_Biblioteca\PI_2021_III_P3_EQUIPO1\x64\Debug\PI2021IIIP3EQUIPO1.frmSalaLectura.resources
+C:\Users\UNAPS14\source\repos\Proyecto_Biblioteca\PI_2021_III_P3_EQUIPO1\x64\Debug\PI2021IIIP3EQUIPO1.frmSucursal.resources
+C:\Users\UNAPS14\source\repos\Proyecto_Biblioteca\PI_2021_III_P3_EQUIPO1\x64\Debug\PI2021IIIP3EQUIPO1.frmVisitasSalaComputo.resources
+C:\Users\UNAPS14\source\repos\Proyecto_Biblioteca\PI_2021_III_P3_EQUIPO1\x64\Debug\PI_2021_III_P3_EQUIPO1.vcxproj.GenerateResource.cache
