@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <ProjectGuid>{09035069-FD2E-4B95-9220-B8CC48CA6C58}</ProjectGuid>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <Keyword>ManagedCProj</Keyword>
+    <RootNamespace>PI2021IIIP3EQUIPO1</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CLRSupport>true</CLRSupport>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CLRSupport>true</CLRSupport>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CLRSupport>true</CLRSupport>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CLRSupport>true</CLRSupport>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies />
+      <SubSystem>Windows</SubSystem>
+      <EntryPointSymbol>main</EntryPointSymbol>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies />
+      <SubSystem>Windows</SubSystem>
+      <EntryPointSymbol>main</EntryPointSymbol>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies />
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies />
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Cliente.cpp" />
+    <ClCompile Include="Computadora.cpp" />
+    <ClCompile Include="Daño.cpp" />
+    <ClCompile Include="Empleado.cpp" />
+    <ClCompile Include="Estante.cpp" />
+    <ClCompile Include="Factura.cpp" />
+    <ClCompile Include="frmBiblioteca.cpp" />
+    <ClCompile Include="frmCliente.cpp" />
+    <ClCompile Include="frmComputadora.cpp" />
+    <ClCompile Include="frmDaño.cpp" />
+    <ClCompile Include="frmEmpleado.cpp" />
+    <ClCompile Include="frmEstante.cpp" />
+    <ClCompile Include="frmFactura.cpp" />
+    <ClCompile Include="frmInicio.cpp" />
+    <ClCompile Include="frmInventario.cpp" />
+    <ClCompile Include="frmLibro.cpp" />
+    <ClCompile Include="frmLibrosEstante.cpp" />
+    <ClCompile Include="frmListaCliente.cpp" />
+    <ClCompile Include="frmListaDaños.cpp" />
+    <ClCompile Include="frmListaEmpleado.cpp">
+      <FileType>CppCode</FileType>
+    </ClCompile>
+    <ClCompile Include="frmListaFactura.cpp" />
+    <ClCompile Include="frmListaLibros.cpp" />
+    <ClCompile Include="frmListaPersona.cpp" />
+    <ClCompile Include="frmListaPrestamo.cpp" />
+    <ClCompile Include="frmListaProveedores.cpp" />
+    <ClCompile Include="frmListaSalaLectura.cpp" />
+    <ClCompile Include="frmListaSucursales.cpp" />
+    <ClCompile Include="frmPersona.cpp" />
+    <ClCompile Include="frmPrestamo.cpp" />
+    <ClCompile Include="frmProveedores.cpp" />
+    <ClCompile Include="frmRecibidos.cpp" />
+    <ClCompile Include="frmRegistroComputadoras.cpp" />
+    <ClCompile Include="frmSalaComputo.cpp" />
+    <ClCompile Include="frmSalaLectura.cpp" />
+    <ClCompile Include="frmSucursal.cpp" />
+    <ClCompile Include="frmVisitasSalaComputo.cpp" />
+    <ClCompile Include="Libro.cpp" />
+    <ClCompile Include="Persona.cpp" />
+    <ClCompile Include="Prestamo.cpp" />
+    <ClCompile Include="Proveedor.cpp" />
+    <ClCompile Include="Recibido.cpp" />
+    <ClCompile Include="SalaComputo.cpp" />
+    <ClCompile Include="SalaLectura.cpp" />
+    <ClCompile Include="Sucursal.cpp" />
+    <ClCompile Include="Usuario.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Cliente.h" />
+    <ClInclude Include="Computadora.h" />
+    <ClInclude Include="Daño.h" />
+    <ClInclude Include="Empleado.h" />
+    <ClInclude Include="Estante.h" />
+    <ClInclude Include="Factura.h" />
+    <ClInclude Include="frmBiblioteca.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmCliente.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmComputadora.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmDaño.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmEmpleado.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmEstante.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmFactura.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmInicio.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmInventario.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmLibro.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmLibrosEstante.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmListaCliente.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmListaDaños.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmListaEmpleado.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmListaFactura.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmListaLibros.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmListaPersona.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmListaPrestamo.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmListaProveedores.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmListaSalaLectura.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmListaSucursales.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmPersona.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmPrestamo.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmProveedores.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmRecibidos.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmRegistroComputadoras.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmSalaComputo.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmSalaLectura.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmSucursal.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmVisitasSalaComputo.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="Libro.h" />
+    <ClInclude Include="Persona.h" />
+    <ClInclude Include="Prestamo.h" />
+    <ClInclude Include="Proveedor.h" />
+    <ClInclude Include="Recibido.h" />
+    <ClInclude Include="SalaComputo.h" />
+    <ClInclude Include="SalaLectura.h" />
+    <ClInclude Include="Sucursal.h" />
+    <ClInclude Include="Usuario.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="frmBiblioteca.resx">
+      <DependentUpon>frmBiblioteca.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCliente.resx">
+      <DependentUpon>frmCliente.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmComputadora.resx">
+      <DependentUpon>frmComputadora.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDaño.resx" />
+    <EmbeddedResource Include="frmEmpleado.resx" />
+    <EmbeddedResource Include="frmEstante.resx">
+      <DependentUpon>frmEstante.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFactura.resx" />
+    <EmbeddedResource Include="frmInicio.resx">
+      <DependentUpon>frmInicio.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInventario.resx">
+      <DependentUpon>frmInventario.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLibro.resx">
+      <DependentUpon>frmLibro.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLibrosEstante.resx">
+      <DependentUpon>frmLibrosEstante.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmListaCliente.resx">
+      <DependentUpon>frmListaCliente.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmListaDaños.resx">
+      <DependentUpon>frmListaDaños.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmListaEmpleado.resx">
+      <DependentUpon>frmListaEmpleado.cpp</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmListaFactura.resx">
+      <DependentUpon>frmListaFactura.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmListaLibros.resx">
+      <DependentUpon>frmListaLibros.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmListaPersona.resx">
+      <DependentUpon>frmListaPersona.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmListaPrestamo.resx">
+      <DependentUpon>frmListaPrestamo.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmListaProveedores.resx">
+      <DependentUpon>frmListaProveedores.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmListaSalaLectura.resx">
+      <DependentUpon>frmListaSalaLectura.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmListaSucursales.resx">
+      <DependentUpon>frmListaSucursales.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPersona.resx">
+      <DependentUpon>frmPersona.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPrestamo.resx">
+      <DependentUpon>frmPrestamo.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmProveedores.resx">
+      <DependentUpon>frmProveedores.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRecibidos.resx">
+      <DependentUpon>frmRecibidos.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRegistroComputadoras.resx">
+      <DependentUpon>frmRegistroComputadoras.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSalaComputo.resx">
+      <DependentUpon>frmSalaComputo.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSalaLectura.resx">
+      <DependentUpon>frmSalaLectura.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSucursal.resx">
+      <DependentUpon>frmSucursal.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmVisitasSalaComputo.resx">
+      <DependentUpon>frmVisitasSalaComputo.h</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

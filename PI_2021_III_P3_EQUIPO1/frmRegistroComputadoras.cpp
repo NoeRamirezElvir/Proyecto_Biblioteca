@@ -1,0 +1,2 @@
+#include "frmRegistroComputadoras.h"
+

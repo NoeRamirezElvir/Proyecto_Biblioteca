@@ -1,0 +1,165 @@
+  PI2021IIIP3EQUIPO1.frmBiblioteca.resources - Embedded, ContainedInManifestFile, 
+  PI2021IIIP3EQUIPO1.frmCliente.resources - Embedded, ContainedInManifestFile, 
+  PI2021IIIP3EQUIPO1.frmComputadora.resources - Embedded, ContainedInManifestFile, 
+  PI2021IIIP3EQUIPO1.frmDaño.resources - Embedded, ContainedInManifestFile, 
+  PI2021IIIP3EQUIPO1.frmEmpleado.resources - Embedded, ContainedInManifestFile, 
+  PI2021IIIP3EQUIPO1.frmEstante.resources - Embedded, ContainedInManifestFile, 
+  PI2021IIIP3EQUIPO1.frmFactura.resources - Embedded, ContainedInManifestFile, 
+  PI2021IIIP3EQUIPO1.frmInicio.resources - Embedded, ContainedInManifestFile, 
+  PI2021IIIP3EQUIPO1.frmInventario.resources - Embedded, ContainedInManifestFile, 
+  PI2021IIIP3EQUIPO1.frmLibro.resources - Embedded, ContainedInManifestFile, 
+  PI2021IIIP3EQUIPO1.frmLibrosEstante.resources - Embedded, ContainedInManifestFile, 
+  PI2021IIIP3EQUIPO1.frmListaCliente.resources - Embedded, ContainedInManifestFile, 
+  PI2021IIIP3EQUIPO1.frmListaDaños.resources - Embedded, ContainedInManifestFile, 
+  PI2021IIIP3EQUIPO1.frmListaEmpleado.resources - Embedded, ContainedInManifestFile, 
+  PI2021IIIP3EQUIPO1.frmListaFactura.resources - Embedded, ContainedInManifestFile, 
+  PI2021IIIP3EQUIPO1.frmListaLibros.resources - Embedded, ContainedInManifestFile, 
+  PI2021IIIP3EQUIPO1.frmListaPersona.resources - Embedded, ContainedInManifestFile, 
+  PI2021IIIP3EQUIPO1.frmListaPrestamo.resources - Embedded, ContainedInManifestFile, 
+  PI2021IIIP3EQUIPO1.frmListaProveedores.resources - Embedded, ContainedInManifestFile, 
+  PI2021IIIP3EQUIPO1.frmListaSalaLectura.resources - Embedded, ContainedInManifestFile, 
+  PI2021IIIP3EQUIPO1.frmListaSucursales.resources - Embedded, ContainedInManifestFile, 
+  PI2021IIIP3EQUIPO1.frmPersona.resources - Embedded, ContainedInManifestFile, 
+  PI2021IIIP3EQUIPO1.frmPrestamo.resources - Embedded, ContainedInManifestFile, 
+  PI2021IIIP3EQUIPO1.frmProveedores.resources - Embedded, ContainedInManifestFile, 
+  PI2021IIIP3EQUIPO1.frmRecibidos.resources - Embedded, ContainedInManifestFile, 
+  PI2021IIIP3EQUIPO1.frmRegistroComputadoras.resources - Embedded, ContainedInManifestFile, 
+  PI2021IIIP3EQUIPO1.frmSalaComputo.resources - Embedded, ContainedInManifestFile, 
+  PI2021IIIP3EQUIPO1.frmSalaLectura.resources - Embedded, ContainedInManifestFile, 
+  PI2021IIIP3EQUIPO1.frmSucursal.resources - Embedded, ContainedInManifestFile, 
+  PI2021IIIP3EQUIPO1.frmVisitasSalaComputo.resources - Embedded, ContainedInManifestFile, 
+ImageRuntimeVersion: v4.0.30319
+Assembly PI_2021_III_P3_EQUIPO1, Version=0.0.*, Culture=Todos los idiomas (todos los países): 
+	hash=SHA1, flags=PublicKey
+Assembly mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a: 
+	hash=None, flags=None
+Assembly System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Class PI2021IIIP3EQUIPO1.frmListaCliente: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.Windows.Forms.DataGridView dgvListaClientes : Public
+Class PI2021IIIP3EQUIPO1.frmCliente: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class PI2021IIIP3EQUIPO1.frmRegistroComputadoras: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.Windows.Forms.DataGridView dvgListaComputadoras : Public
+Class PI2021IIIP3EQUIPO1.frmComputadora: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class PI2021IIIP3EQUIPO1.frmListaDaños: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.Windows.Forms.DataGridView dgvDaños : Public
+Class PI2021IIIP3EQUIPO1.frmDaño: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class PI2021IIIP3EQUIPO1.frmListaEmpleado: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.Windows.Forms.DataGridView dgvEmpleado : Public
+Class PI2021IIIP3EQUIPO1.frmEmpleado: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class PI2021IIIP3EQUIPO1.frmLibrosEstante: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.Windows.Forms.DataGridView dgvListaEstantes : Public
+Class PI2021IIIP3EQUIPO1.frmEstante: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class PI2021IIIP3EQUIPO1.frmListaFactura: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.Windows.Forms.DataGridView dgvFactura : Public
+Class PI2021IIIP3EQUIPO1.frmFactura: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class PI2021IIIP3EQUIPO1.frmListaPersona: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.Windows.Forms.DataGridView dgvListaPersona : Public
+Class PI2021IIIP3EQUIPO1.frmPersona: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class PI2021IIIP3EQUIPO1.frmListaLibros: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.Windows.Forms.DataGridView dgvLibros : Public
+Class PI2021IIIP3EQUIPO1.frmLibro: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class PI2021IIIP3EQUIPO1.frmListaSucursales: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.Windows.Forms.DataGridView dgvListaSucursal : Public
+Class PI2021IIIP3EQUIPO1.frmSucursal: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class PI2021IIIP3EQUIPO1.frmVisitasSalaComputo: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.Windows.Forms.DataGridView dgvSalaComputo : Public
+Class PI2021IIIP3EQUIPO1.frmSalaComputo: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class PI2021IIIP3EQUIPO1.frmListaPrestamo: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.Windows.Forms.DataGridView dgvPrestamo : Public
+Class PI2021IIIP3EQUIPO1.frmPrestamo: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class PI2021IIIP3EQUIPO1.frmListaProveedores: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.Windows.Forms.DataGridView dgvProveedores : Public
+Class PI2021IIIP3EQUIPO1.frmProveedores: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class PI2021IIIP3EQUIPO1.frmInventario: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.Windows.Forms.DataGridView dgvInventario : Public
+Class PI2021IIIP3EQUIPO1.frmRecibidos: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class PI2021IIIP3EQUIPO1.frmListaSalaLectura: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.Windows.Forms.DataGridView dgvListaSalaL : Public
+Class PI2021IIIP3EQUIPO1.frmSalaLectura: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class PI2021IIIP3EQUIPO1.frmBiblioteca: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.Windows.Forms.Label lblsaludo : Public
+Class PI2021IIIP3EQUIPO1.frmInicio: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
