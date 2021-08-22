@@ -61,7 +61,7 @@ void SalaComputo::establecerHorario(string _tipo) {
 	int longitud = (int)_tipo.size();
 	if (longitud < 4)
 		cerr << "tipo de sala incorrecta" << endl;
-	longitud = (longitud < 20 ? longitud : 19);
+	longitud = (longitud < 10 ? longitud : 9);
 	_tipo.copy(horario, longitud);
 	horario[longitud] = '\0';
 }

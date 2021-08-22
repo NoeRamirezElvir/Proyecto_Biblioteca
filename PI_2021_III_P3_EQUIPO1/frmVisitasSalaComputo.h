@@ -55,6 +55,16 @@ namespace PI2021IIIP3EQUIPO1 {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ colEncargado;
 
 
+
+
+
+
+
+
+
+
+
+
 	private:
 		/// <summary>
 		/// Variable del diseñador necesaria.
@@ -70,12 +80,12 @@ namespace PI2021IIIP3EQUIPO1 {
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(frmVisitasSalaComputo::typeid));
 			this->dgvSalaComputo = (gcnew System::Windows::Forms::DataGridView());
-			this->colIdLab = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->colHorario = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->colDisponibilidad = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->colCapacidad = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->colEncargado = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->colEncargado = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->colCapacidad = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->colDisponibilidad = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->colHorario = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->colIdLab = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvSalaComputo))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -93,31 +103,6 @@ namespace PI2021IIIP3EQUIPO1 {
 			this->dgvSalaComputo->Size = System::Drawing::Size(543, 263);
 			this->dgvSalaComputo->TabIndex = 0;
 			// 
-			// colIdLab
-			// 
-			this->colIdLab->HeaderText = L"ID Laboratorio";
-			this->colIdLab->Name = L"colIdLab";
-			// 
-			// colHorario
-			// 
-			this->colHorario->HeaderText = L"Horario";
-			this->colHorario->Name = L"colHorario";
-			// 
-			// colDisponibilidad
-			// 
-			this->colDisponibilidad->HeaderText = L"Disponibilidad";
-			this->colDisponibilidad->Name = L"colDisponibilidad";
-			// 
-			// colCapacidad
-			// 
-			this->colCapacidad->HeaderText = L"Capacidad";
-			this->colCapacidad->Name = L"colCapacidad";
-			// 
-			// colEncargado
-			// 
-			this->colEncargado->HeaderText = L"Encargado";
-			this->colEncargado->Name = L"colEncargado";
-			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
@@ -128,6 +113,31 @@ namespace PI2021IIIP3EQUIPO1 {
 			this->label1->Size = System::Drawing::Size(277, 25);
 			this->label1->TabIndex = 1;
 			this->label1->Text = L"Laboratorios de Computo";
+			// 
+			// colEncargado
+			// 
+			this->colEncargado->HeaderText = L"Encargado";
+			this->colEncargado->Name = L"colEncargado";
+			// 
+			// colCapacidad
+			// 
+			this->colCapacidad->HeaderText = L"Capacidad";
+			this->colCapacidad->Name = L"colCapacidad";
+			// 
+			// colDisponibilidad
+			// 
+			this->colDisponibilidad->HeaderText = L"Disponibilidad";
+			this->colDisponibilidad->Name = L"colDisponibilidad";
+			// 
+			// colHorario
+			// 
+			this->colHorario->HeaderText = L"Horario";
+			this->colHorario->Name = L"colHorario";
+			// 
+			// colIdLab
+			// 
+			this->colIdLab->HeaderText = L"ID Laboratorio";
+			this->colIdLab->Name = L"colIdLab";
 			// 
 			// frmVisitasSalaComputo
 			// 

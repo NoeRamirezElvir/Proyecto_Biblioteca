@@ -45,7 +45,7 @@ std::string Estante::obtenerLetraF()const {
 }
 void Estante::establecerNiveles(std::string nivel) {
 	int longitud = (int)nivel.size();
-	longitud = 1;
+	longitud = 2;
 	nivel.copy(niveles, longitud);
 	niveles[longitud] = '\0';
 }

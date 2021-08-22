@@ -326,33 +326,38 @@ private: System::Void btnRegistrar_Click(System::Object^ sender, System::EventAr
 			MessageBox::Show("No se pudo abrir el archivo", "Error en el sistema", MessageBoxButtons::OK, MessageBoxIcon::Error);
 			this->Close();
 		}
+		ifstream SalaComputoEntrada("SalasComputo.dat", ios::binary | ios::app | ios::in);
+		if (!SalaComputoEntrada)
+		{
+			throw gcnew Exception("No se pudo abrir el archivo.");
+		}
+		if (txtId->Text == "")
+		{
+			throw gcnew Exception("Ingrese el ID.");
+		}
 		int ID = Convert::ToInt32(txtId->Text);
-		int capacidad = Convert::ToInt32(txtCapacidad->Text);
 
-		System::String^ enca = cboEncargado->SelectedItem->ToString();
-		System::String^ disp = cboDisponibilidad->SelectedItem->ToString();
-		System::String^ horario = txtHorario->Text->ToString();
-
-		std::string encargado = marshal_as<std::string>(enca);
-		std::string disponibilidad = marshal_as<std::string>(disp);
-		std::string hora_ = marshal_as<std::string>(horario);
-		SalaComputo sala(ID, hora_, disponibilidad, capacidad, encargado);
-		if (ID.ToString() == "")
+		SalaComputo leerSucursal;
+		SalaComputoEntrada.read(reinterpret_cast<char*>(&leerSucursal), sizeof(SalaComputo));
+		
+		while (!SalaComputoEntrada.eof())
 		{
-			throw gcnew Exception("Ingrese ID");
+			int id = leerSucursal.obtenerId();
+			if (ID != id)
+			{
+				SalaComputoEntrada.read(reinterpret_cast<char*>(&leerSucursal), sizeof(SalaComputo));
+			}
+			else
+			{
+				throw gcnew Exception("El ID ya esta en uso.");
+			}
 		}
-		if (capacidad.ToString() == "")
+		if (ID <= 0)
 		{
-			throw gcnew Exception("Ingrese Capacidad");
+			throw gcnew Exception("El ID tiene que ser positivo y mayor a 0.");
 		}
-		if (cboEncargado->SelectedItem == nullptr)
-		{
-			throw gcnew Exception("Seleccione Encargado");
-		}
-		if (cboDisponibilidad->SelectedItem == nullptr)
-		{
-			throw gcnew Exception("Seleccione disponibilidad");
-		}
+		//horario
+		System::String^ horario = txtHorario->Text;
 		if (horario == "")
 		{
 			throw gcnew Exception("Ingrese horario. Ejem: 18:00-21:00");
@@ -361,6 +366,36 @@ private: System::Void btnRegistrar_Click(System::Object^ sender, System::EventAr
 		{
 			throw gcnew Exception("Horario ingresado muy corto");
 		}
+		//disponibilidad
+		if (cboDisponibilidad->SelectedItem == nullptr)
+		{
+			throw gcnew Exception("Seleccione disponibilidad");
+		}
+		System::String^ disp = cboDisponibilidad->SelectedItem->ToString();
+		//capacidad
+		int capacidad = Convert::ToInt16(txtCapacidad->Text);
+		if (txtCapacidad->Text == "")
+		{
+			throw gcnew Exception("Ingrese Capacidad");
+		}
+		if (capacidad < 10)
+		{
+			throw gcnew Exception("Capacidad muy baja");
+		}
+		//encargado
+		if (cboEncargado->SelectedItem == nullptr)
+		{
+			throw gcnew Exception("Seleccione Encargado");
+		}
+		System::String^ enca = cboEncargado->SelectedItem->ToString();
+
+
+		std::string encargado = marshal_as<std::string>(enca);
+		std::string disponibilidad = marshal_as<std::string>(disp);
+		std::string hora_ = marshal_as<std::string>(horario);
+
+		SalaComputo sala(ID, hora_, disponibilidad, capacidad, encargado);
+
 		SalaComputoSalida.write(reinterpret_cast<const char*>(&sala), sizeof(SalaComputo));
 		SalaComputoSalida.close();
 		txtId->Text = "";
@@ -371,7 +406,7 @@ private: System::Void btnRegistrar_Click(System::Object^ sender, System::EventAr
 	}
 	catch (Exception^ excep)
 	{
-		MessageBox::Show("Todos los campos necesarios", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		MessageBox::Show(excep->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 	}
 }
 };
