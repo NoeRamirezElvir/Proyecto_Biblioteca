@@ -2,6 +2,7 @@
 #include "frmListaEmpleado.h"
 #include "Empleado.h"
 #include "Persona.h"
+#include "Sucursal.h"
 #include <fstream>
 #include <iostream>
 #include <string>
@@ -171,7 +172,7 @@ namespace PI2021IIIP3EQUIPO1 {
 			this->lblTitulo->AutoSize = true;
 			this->lblTitulo->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblTitulo->Location = System::Drawing::Point(180, 39);
+			this->lblTitulo->Location = System::Drawing::Point(201, 44);
 			this->lblTitulo->Name = L"lblTitulo";
 			this->lblTitulo->Size = System::Drawing::Size(228, 24);
 			this->lblTitulo->TabIndex = 0;
@@ -298,7 +299,7 @@ namespace PI2021IIIP3EQUIPO1 {
 			this->cboID->Name = L"cboID";
 			this->cboID->Size = System::Drawing::Size(121, 21);
 			this->cboID->TabIndex = 1;
-			this->cboID->SelectedIndexChanged += gcnew System::EventHandler(this, &frmEmpleado::cboID_SelectedIndexChanged); 
+			this->cboID->SelectedIndexChanged += gcnew System::EventHandler(this, &frmEmpleado::cboID_SelectedIndexChanged);
 			// 
 			// lblN
 			// 
@@ -388,7 +389,7 @@ namespace PI2021IIIP3EQUIPO1 {
 			this->pictureBox3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox3.Image")));
 			this->pictureBox3->Location = System::Drawing::Point(470, 90);
 			this->pictureBox3->Name = L"pictureBox3";
-			this->pictureBox3->Size = System::Drawing::Size(112, 165);
+			this->pictureBox3->Size = System::Drawing::Size(117, 165);
 			this->pictureBox3->TabIndex = 37;
 			this->pictureBox3->TabStop = false;
 			// 
@@ -532,94 +533,169 @@ namespace PI2021IIIP3EQUIPO1 {
 #pragma endregion
 
 	private: System::Void btnMostrar_Click(System::Object^ sender, System::EventArgs^ e) {
-		frmListaEmpleado^ listaEmpleado = gcnew frmListaEmpleado;
-		listaEmpleado->Show();
+		try
+		{
+			frmListaEmpleado^ listaEmpleado = gcnew frmListaEmpleado;
+			listaEmpleado->Show();
+			ifstream ArchivoEmpleadoEntrada("Empleados.dat", ios::binary | ios::app | ios::in);
+			if (!ArchivoEmpleadoEntrada)
+			{
+				this->Close();
+				throw gcnew Exception("No se pudo abrir el archivo"); 
+			}
+			Empleado leerEmpleado;
+			ArchivoEmpleadoEntrada.read(reinterpret_cast<char*>(&leerEmpleado),
+				sizeof(Empleado));
+			while (!ArchivoEmpleadoEntrada.eof()) {
+				System::String^ nombre = marshal_as<System::String^>(leerEmpleado.obtenerPrimerNombre());
+				System::String^ apellido = marshal_as<System::String^>(leerEmpleado.obtenerApellidoPaterno());
+				System::String^ departamento = marshal_as<System::String^>(leerEmpleado.obtenerDepartamento());
+				System::String^ fecha = marshal_as<System::String^>(leerEmpleado.obtenerFechaIngreso());
+				System::String^ sucursal = marshal_as<System::String^>(leerEmpleado.obtenerSucursal());
+				std::string sueldo = to_string(leerEmpleado.obtenerSueldo());
+				std::string horas = to_string(leerEmpleado.obtenerHorasExtras());
+				std::string ventas = to_string(leerEmpleado.obtenerCantVentas());
+				std::string precio = to_string(leerEmpleado.obtenerPrecioHorasE());
+				std::string id = to_string(leerEmpleado.obtenerEmpleadoID());
+				System::String^ Sueldo = marshal_as<System::String^>(sueldo);
+				System::String^ Horas = marshal_as<System::String^>(horas);
+				System::String^ Ventas = marshal_as<System::String^>(ventas);
+				System::String^ Precio = marshal_as<System::String^>(precio);
+				System::String^ ID = marshal_as<System::String^>(id);
+				listaEmpleado->dgvEmpleado->Rows->Add(ID, nombre, apellido, fecha, departamento, sucursal);
+				ArchivoEmpleadoEntrada.read(reinterpret_cast<char*>(&leerEmpleado),
+					sizeof(Empleado));
+			}
+		}
+		catch (Exception^ excep)
+		{
+			MessageBox::Show(excep->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
+		
+	}
+private: System::Void frmEmpleado_Load(System::Object^ sender, System::EventArgs^ e) {
+	try
+	{
+		ofstream archivoEmpleados("Empleados.dat", ios::binary | ios::app | ios::out);
+		if (!archivoEmpleados)
+		{
+			this->Close();
+			throw gcnew Exception("No se pudo abrir el archivo");
+		}
+		ifstream archivoPersonaEntrada("Personas.dat", ios::binary | ios::app | ios::in);
+		if (!archivoPersonaEntrada)
+		{
+			this->Close();
+			throw gcnew Exception("No se pudo abrir el archivo");
+		}
+		ifstream archivoSucursalEntrada;
+		archivoSucursalEntrada.open("Sucursales.dat", ios::binary | ios::app | ios::in);
+		if (!archivoSucursalEntrada)
+		{
+			this->Close();
+			throw gcnew Exception("No se pudo abrir el archivo");
+		}
+
+		Persona leerPersona;
+		archivoPersonaEntrada.read(reinterpret_cast<char*>(&leerPersona), sizeof(Persona));
+		while (!archivoPersonaEntrada.eof())
+		{
+			std::string idPersona = to_string(leerPersona.obtenerID());
+			std::string tipoPersona = leerPersona.obtenerTipoPersona();
+			System::String^ ID = marshal_as<System::String^>(idPersona);
+			if (tipoPersona == "Empleado")
+			{
+				cboID->Items->Add(ID);
+			}
+			archivoPersonaEntrada.read(reinterpret_cast<char*>(&leerPersona), sizeof(Persona));
+		}
+
+		Sucursal leerSucursal;
+		archivoSucursalEntrada.read(reinterpret_cast<char*>(&leerSucursal), sizeof(Sucursal));
+		while (!archivoSucursalEntrada.eof())
+		{
+			std::string nombre = leerSucursal.obtenerNombre();
+			System::String^ Nombre = marshal_as<System::String^>(nombre);
+			cboSucursal->Items->Add(Nombre);
+
+			archivoSucursalEntrada.read(reinterpret_cast<char*>(&leerSucursal), sizeof(Sucursal));
+		}
+
+		archivoPersonaEntrada.close();
+		archivoSucursalEntrada.close();
+	}
+	catch (Exception^ excep)
+	{
+		MessageBox::Show(excep->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error); 
+	}
+	
+}
+private: System::Void cboID_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+	try
+	{
+		ifstream archivoPersonaEntrada("Personas.dat", ios::binary | ios::app | ios::in);
+		if (!archivoPersonaEntrada)
+		{
+			MessageBox::Show("No se pudo abrir el archivo", "Error en el sistema", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			this->Close();
+		}
 		ifstream ArchivoEmpleadoEntrada("Empleados.dat", ios::binary | ios::app | ios::in);
 		if (!ArchivoEmpleadoEntrada)
 		{
 			MessageBox::Show("No se pudo abrir el archivo", "Error en el sistema", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
+		System::String^ IDpersona = cboID->SelectedItem->ToString();
+		int numID = Convert::ToInt32(IDpersona);
 		Empleado leerEmpleado;
 		ArchivoEmpleadoEntrada.read(reinterpret_cast<char*>(&leerEmpleado),
-			sizeof(Empleado)); 
-		while (!ArchivoEmpleadoEntrada.eof()) {
-			System::String^ nombre = marshal_as<System::String^>(leerEmpleado.obtenerPrimerNombre());
-			System::String^ apellido = marshal_as<System::String^>(leerEmpleado.obtenerApellidoPaterno());
-			System::String^ departamento = marshal_as<System::String^>(leerEmpleado.obtenerDepartamento());
-			System::String^ fecha = marshal_as<System::String^>(leerEmpleado.obtenerFechaIngreso());
-			std::string sueldo = to_string(leerEmpleado.obtenerSueldo());
-			std::string horas = to_string(leerEmpleado.obtenerHorasExtras());
-			std::string ventas = to_string(leerEmpleado.obtenerCantVentas());
-			std::string precio = to_string(leerEmpleado.obtenerPrecioHorasE());
-			std::string id = to_string(leerEmpleado.obtenerEmpleadoID());
-			System::String^ Sueldo = marshal_as<System::String^>(sueldo);
-			System::String^ Horas = marshal_as<System::String^>(horas);
-			System::String^ Ventas = marshal_as<System::String^>(ventas);
-			System::String^ Precio = marshal_as<System::String^>(precio);
-			System::String^ ID = marshal_as<System::String^>(id);
-			listaEmpleado->dgvEmpleado->Rows->Add(ID, nombre, apellido, fecha, departamento);
-			ArchivoEmpleadoEntrada.read(reinterpret_cast<char*>(&leerEmpleado),
-				sizeof(Empleado));
-		}
-	}
-private: System::Void frmEmpleado_Load(System::Object^ sender, System::EventArgs^ e) {
-	ofstream archivoEmpleados("Empleados.dat", ios::binary | ios::app | ios::out);
-	if (!archivoEmpleados)
-	{
-		MessageBox::Show("No se pudo abrir el archivo", "Error en el sistema", MessageBoxButtons::OK, MessageBoxIcon::Error);
-		this->Close();
-	}
-	ifstream archivoPersonaEntrada("Personas.dat", ios::binary | ios::app | ios::in);
-	if (!archivoPersonaEntrada)
-	{
-		MessageBox::Show("No se pudo abrir el archivo", "Error en el sistema", MessageBoxButtons::OK, MessageBoxIcon::Error);
-		this->Close();
-	}
-	Persona leerPersona;
-	archivoPersonaEntrada.read(reinterpret_cast<char*>(&leerPersona), sizeof(Persona));
-	while (!archivoPersonaEntrada.eof())
-	{
-		std::string idPersona = to_string(leerPersona.obtenerID());
-		std::string tipoPersona = leerPersona.obtenerTipoPersona();
-		System::String^ ID = marshal_as<System::String^>(idPersona);
-		if (tipoPersona == "Empleado")
+			sizeof(Empleado));
+		while (!ArchivoEmpleadoEntrada.eof())
 		{
-			cboID->Items->Add(ID);
+			int id = leerEmpleado.obtenerEmpleadoID();
+			if (numID != id)
+			{
+				ArchivoEmpleadoEntrada.read(reinterpret_cast<char*>(&leerEmpleado),
+					sizeof(Empleado));
+			}
+			else
+			{
+				txtEmpleadoID->Text = "";
+				lblNombre->Text = "";
+				lblApellido->Text = "";
+				throw gcnew Exception("El ID ya esta en uso"); 
+			}
 		}
-		archivoPersonaEntrada.read(reinterpret_cast<char*>(&leerPersona), sizeof(Persona));
-	}
 
-	archivoPersonaEntrada.close();
-}
-private: System::Void cboID_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
-	ifstream archivoPersonaEntrada("Personas.dat", ios::binary | ios::app | ios::in);
-	if (!archivoPersonaEntrada)
-	{
-		MessageBox::Show("No se pudo abrir el archivo", "Error en el sistema", MessageBoxButtons::OK, MessageBoxIcon::Error);
-		this->Close();
-	}
-	System::String^ IDpersona = cboID->SelectedItem->ToString();
-	txtEmpleadoID->Text = IDpersona;
-	Persona leerPersona;
-	archivoPersonaEntrada.read(reinterpret_cast<char*>(&leerPersona), sizeof(Persona));
-	while (!archivoPersonaEntrada.eof())
-	{
-		std::string nombre = leerPersona.obtenerPrimerNombre();
-		std::string apellido = leerPersona.obtenerApellidoPaterno();
-		System::String^ nombrep = marshal_as<System::String^>(nombre);
-		System::String^ apellidop = marshal_as<System::String^>(apellido);
-		std::string id = to_string(leerPersona.obtenerID());
-		System::String^ id1 = marshal_as<System::String^>(id);
-		if (id1 == IDpersona)
-		{
-			lblNombre->Text = nombrep;
-			lblApellido->Text = apellidop;
-		}
+		txtEmpleadoID->Text = IDpersona;
+		txtEmpleadoID->Enabled = false; 
+
+		Persona leerPersona;
 		archivoPersonaEntrada.read(reinterpret_cast<char*>(&leerPersona), sizeof(Persona));
+		while (!archivoPersonaEntrada.eof())
+		{
+			std::string nombre = leerPersona.obtenerPrimerNombre();
+			std::string apellido = leerPersona.obtenerApellidoPaterno();
+			System::String^ nombrep = marshal_as<System::String^>(nombre);
+			System::String^ apellidop = marshal_as<System::String^>(apellido);
+			std::string id = to_string(leerPersona.obtenerID());
+			System::String^ id1 = marshal_as<System::String^>(id);
+			if (id1 == IDpersona)
+			{
+				lblNombre->Text = nombrep;
+				lblApellido->Text = apellidop;
+			}
+			archivoPersonaEntrada.read(reinterpret_cast<char*>(&leerPersona), sizeof(Persona));
+		}
+	}
+	catch (Exception^ excep)
+	{
+		MessageBox::Show(excep->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 	}
 
 }
 private: System::Void btnAgregar_Click(System::Object^ sender, System::EventArgs^ e) {
+	try
+	{
 		ofstream archivoEmpleadoSalida("Empleados.dat", ios::binary | ios::app | ios::out);
 		if (!archivoEmpleadoSalida) {
 			MessageBox::Show("No se pudo abrir el archivo", "Error en el sistema", MessageBoxButtons::OK, MessageBoxIcon::Error);
@@ -638,6 +714,10 @@ private: System::Void btnAgregar_Click(System::Object^ sender, System::EventArgs
 		{
 			std::string id = to_string(leerPersona.obtenerID());
 			System::String^ ID = marshal_as<System::String^>(id);
+			if (cboID->SelectedItem == nullptr)
+			{
+				throw gcnew Exception("Seleccione un ID valido.");
+			}
 			if (ID == txtEmpleadoID->Text)
 			{
 				/////Variables persona
@@ -650,18 +730,74 @@ private: System::Void btnAgregar_Click(System::Object^ sender, System::EventArgs
 				int edad = Convert::ToInt32(leerPersona.obtenerEdad());
 				int IdP = Convert::ToInt32(leerPersona.obtenerID());
 				/////Variables empleado
-				System::String^ depa = txtDepartamento->Text;
+
+				if (txtIngreso->Text == "")
+				{
+					throw gcnew Exception("Ingrese la fecha de ingreso.");
+				}
 				System::String^ fec = txtIngreso->Text;
-				int ID = Convert::ToInt32(txtEmpleadoID->Text);
+				if (txtIngreso->Text->Length < 6)
+				{
+					throw gcnew Exception("La fecha no puede ser tan corta.");
+				}
+				if (txtSueldo->Text == "")
+				{
+					throw gcnew Exception("Ingrese el sueldo.");
+				}
 				double sueldo = Convert::ToDouble(txtSueldo->Text);
+				if (sueldo < 0)
+				{
+					throw gcnew Exception("El sueldo debe ser >= 0");
+				}
+				if (txtHorasExtras->Text == "")
+				{
+					throw gcnew Exception("Ingrese la cantidad de horas extras.");
+				}
 				double horas = Convert::ToDouble(txtHorasExtras->Text);
+				if (horas < 0)
+				{
+					throw gcnew Exception("La cantidad de horas extras debe ser >= 0");
+				}
+				if (txtVentas->Text == "")
+				{
+					throw gcnew Exception("Ingrese la cantidad de ventas realizadas");
+				}
 				double ventas = Convert::ToDouble(txtVentas->Text);
+				if (ventas < 0)
+				{
+					throw gcnew Exception("La cantidad de ventas debe ser >= 0");
+				}
+				if (txtPrecioHora->Text == "")
+				{
+					throw gcnew Exception("Ingrese el precio por hora");
+				}
 				double precio = Convert::ToDouble(txtPrecioHora->Text);
+				if (precio < 0)
+				{
+					throw gcnew Exception("El precio por hora debe ser >= 0");
+				}
+				if (txtDepartamento->Text == "")
+				{
+					throw gcnew Exception("Ingrese el departamento");
+				}
+				System::String^ depa = txtDepartamento->Text;
+				if (txtDepartamento->Text->Length < 5)
+				{
+					throw gcnew Exception("El departamento no puede ser tan corto.");
+				}
+				if (cboSucursal->SelectedItem == nullptr)
+				{
+					throw gcnew Exception("Seleccione una sucursal");
+				}
+				System::String^ _sucursal = cboSucursal->SelectedItem->ToString();
+
+				int ID = Convert::ToInt32(txtEmpleadoID->Text);
 				std::string departamento = marshal_as<std::string>(depa);
 				std::string fecha = marshal_as<std::string>(fec);
+				std::string sucursal = marshal_as<std::string>(_sucursal);
 				//////// 
 				Empleado empleado(IdP, nombre, apellido, ID, fecha, sueldo,
-					horas, ventas, precio, departamento);
+					horas, ventas, precio, departamento, sucursal);
 				archivoEmpleadoSalida.write(reinterpret_cast<char*>(&empleado),
 					sizeof(Empleado));
 				archivoEmpleadoSalida.close();
@@ -672,10 +808,16 @@ private: System::Void btnAgregar_Click(System::Object^ sender, System::EventArgs
 				txtHorasExtras->Text = "";
 				txtVentas->Text = "";
 				txtPrecioHora->Text = "";
-				txtDepartamento->Text = ""; 
+				txtDepartamento->Text = "";
+				cboSucursal->Text = "";
 			}
 			archivoPersonaEntrada.read(reinterpret_cast<char*>(&leerPersona), sizeof(Persona));
 		}
+	}
+	catch (Exception^ excep)
+	{
+		MessageBox::Show(excep->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+	}
 }
 };
 }

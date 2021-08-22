@@ -8,12 +8,20 @@ Prestamo::Prestamo() {
 }
 Prestamo::Prestamo(int id, string nombre, string apellido, string tipo_prestamo, int dias,
 	double costo_dia, double costo_daño, int id_daño, string tipo_daño, string _nombreLibro) {
-	establecerIDcliente(id), establecerPrimerNombre(nombre), establecerApellidoPaterno(apellido),
+	establecerPrestamoID(id), establecerPrimerNombre(nombre), establecerApellidoPaterno(apellido),
 		establecerTipoPrestamo(tipo_prestamo), establecerDias(dias),
 		establecerCostoDia(costo_dia), establecerCostoDaño(costo_daño),
-		establecer_Daño(id_daño), establecer_TipoDaño(tipo_daño), establecer_Libro(_nombreLibro);
+		establecer_Daño(id_daño), establecer_TipoDaño(tipo_daño), establecer_Libro(_nombreLibro); 
 }
-
+ 
+void Prestamo::establecerPrestamoID(int id) { 
+	if (id < 0)
+		cerr << "ID incorrecto." << endl;
+	PrestamoID = id; 
+}
+int Prestamo::obtenerPrestamoID()const {
+	return PrestamoID; 
+}
 void Prestamo::establecer_Daño(int id_daño) {
 	if (id_daño < 0)
 		cerr << "Numero de ID invalido" << endl;

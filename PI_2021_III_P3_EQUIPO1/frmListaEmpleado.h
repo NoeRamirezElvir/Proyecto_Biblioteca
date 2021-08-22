@@ -64,7 +64,13 @@ namespace PI2021IIIP3EQUIPO1 {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ colApellido;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ colFecha;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ colDepartamento;
-	private: System::Windows::Forms::DataGridViewComboBoxColumn^ colSucursal;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ colSucursal;
+
+
+
+
+
+
 
 
 
@@ -91,14 +97,14 @@ namespace PI2021IIIP3EQUIPO1 {
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(frmListaEmpleado::typeid));
 			this->dgvEmpleado = (gcnew System::Windows::Forms::DataGridView());
+			this->lblTitulo = (gcnew System::Windows::Forms::Label());
+			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->colID = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->colNombre = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->colApellido = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->colFecha = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->colDepartamento = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->colSucursal = (gcnew System::Windows::Forms::DataGridViewComboBoxColumn());
-			this->lblTitulo = (gcnew System::Windows::Forms::Label());
-			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+			this->colSucursal = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvEmpleado))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
@@ -115,6 +121,27 @@ namespace PI2021IIIP3EQUIPO1 {
 			this->dgvEmpleado->Name = L"dgvEmpleado";
 			this->dgvEmpleado->Size = System::Drawing::Size(743, 393);
 			this->dgvEmpleado->TabIndex = 0;
+			// 
+			// lblTitulo
+			// 
+			this->lblTitulo->AutoSize = true;
+			this->lblTitulo->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->lblTitulo->ForeColor = System::Drawing::SystemColors::ControlText;
+			this->lblTitulo->Location = System::Drawing::Point(245, 68);
+			this->lblTitulo->Name = L"lblTitulo";
+			this->lblTitulo->Size = System::Drawing::Size(219, 25);
+			this->lblTitulo->TabIndex = 1;
+			this->lblTitulo->Text = L"Lista de Empleados";
+			// 
+			// pictureBox1
+			// 
+			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
+			this->pictureBox1->Location = System::Drawing::Point(470, 44);
+			this->pictureBox1->Name = L"pictureBox1";
+			this->pictureBox1->Size = System::Drawing::Size(57, 60);
+			this->pictureBox1->TabIndex = 3;
+			this->pictureBox1->TabStop = false;
 			// 
 			// colID
 			// 
@@ -147,27 +174,8 @@ namespace PI2021IIIP3EQUIPO1 {
 			// 
 			this->colSucursal->HeaderText = L"Sucursal";
 			this->colSucursal->Name = L"colSucursal";
-			// 
-			// lblTitulo
-			// 
-			this->lblTitulo->AutoSize = true;
-			this->lblTitulo->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->lblTitulo->ForeColor = System::Drawing::SystemColors::ControlText;
-			this->lblTitulo->Location = System::Drawing::Point(245, 68);
-			this->lblTitulo->Name = L"lblTitulo";
-			this->lblTitulo->Size = System::Drawing::Size(219, 25);
-			this->lblTitulo->TabIndex = 1;
-			this->lblTitulo->Text = L"Lista de Empleados";
-			// 
-			// pictureBox1
-			// 
-			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
-			this->pictureBox1->Location = System::Drawing::Point(470, 44);
-			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(57, 60);
-			this->pictureBox1->TabIndex = 3;
-			this->pictureBox1->TabStop = false;
+			this->colSucursal->Resizable = System::Windows::Forms::DataGridViewTriState::True;
+			this->colSucursal->SortMode = System::Windows::Forms::DataGridViewColumnSortMode::NotSortable;
 			// 
 			// frmListaEmpleado
 			// 

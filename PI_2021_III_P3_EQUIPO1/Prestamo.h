@@ -11,6 +11,8 @@ public:
 	Prestamo();
 	Prestamo(int, std::string, std::string, std::string, int, double, double, int, std::string, std::string);
 
+	void establecerPrestamoID(int);
+	int obtenerPrestamoID()const;
 	void establecerTipoPrestamo(std::string);
 	std::string obtenerTipoPrestamo() const;
 	void establecerDias(int);
@@ -32,6 +34,7 @@ public:
 
 
 private:
+	int PrestamoID; 
 	char tipoPrestamo[30];
 	int Dias;
 	double costoDia;
